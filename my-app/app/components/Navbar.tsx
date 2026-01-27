@@ -11,8 +11,8 @@ export function Navbar() {
             <span className="text-white -rotate-45 group-hover:rotate-0 transition-transform duration-500 font-bold text-lg font-serif">S</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-serif font-bold tracking-tight leading-none text-earth">Sparkling Global</span>
-            <span className="text-[9px] uppercase tracking-[0.3em] font-black opacity-40 text-earth">Foundation</span>
+            <span className="text-xl font-serif font-bold tracking-tight leading-none text-earth">Sparkling Era</span>
+            <span className="text-[9px] uppercase tracking-[0.3em] font-black opacity-40 text-earth">Global Foundation</span>
           </div>
         </div>
 

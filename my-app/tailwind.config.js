@@ -13,7 +13,7 @@ export default {
       },
       colors: {
         gold: "#C5A059",
-        earth: "#1A1A1A", // <--- THIS WAS MISSING
+        earth: "#1A1A1A", // This fixes the 'text-earth' error
       },
       animation: {
         'bounce-slow': 'bounce-slow 4s infinite',

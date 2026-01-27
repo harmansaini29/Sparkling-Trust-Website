@@ -14,7 +14,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Sparkling Global | Empowering Bharat",
+  title: "Sparkling Era Global Foundation | Empowering Bharat",
   description: "Bridging ancient wisdom with modern financial literacy.",
 };
 
