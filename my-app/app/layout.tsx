@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import { Preloader } from "./components/ui/Preloader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,8 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${cormorant.variable} antialiased font-sans`}>
+    // suppressHydrationWarning fixes the McAfee/Extension errors
+    // style={{ scrollBehavior: 'smooth' }} avoids global CSS conflict
+    <html lang="en" suppressHydrationWarning style={{ scrollBehavior: 'smooth' }}>
+      <body className={`${inter.variable} ${cormorant.variable} antialiased font-sans bg-[#FDFCF9]`}>
+        <Preloader />
         {children}
       </body>
     </html>

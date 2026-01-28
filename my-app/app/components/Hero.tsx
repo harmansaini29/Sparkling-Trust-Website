@@ -24,7 +24,7 @@ export function Hero() {
                   alt="Bharat Heritage Pattern"
                   fill
                   className="object-contain object-right-top opacity-90 select-none"
-                  priority
+                  priority = { true }
                   sizes="(max-width: 768px) 100vw, 75vw"
                 />
             </div>

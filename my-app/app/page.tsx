@@ -1,45 +1,48 @@
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { TrustTicker } from "./components/TrustTicker";
+import { Philosophy } from "./components/Philosophy"; // New Component
 import { Legacy } from "./components/Legacy";
 import { Initiatives } from "./components/Initiatives";
 import { Leadership } from "./components/Leadership";
+import { Contact } from "./components/Contact"; // New Component
+import { Footer } from "./components/Footer";   // New Component
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#FDFCF9] text-earth selection:bg-gold/30 font-sans overflow-x-hidden">
       
-      {/* 1. Navigation */}
+      {/* 1. Navigation - Sticky & Glassmorphic */}
       <Navbar />
       
-      {/* 2. Hero Section - The foundational entrance */}
+      {/* 2. Hero Section - The Grand Entrance */}
       <Hero />
       
-      {/* Wrapper for subsequent sections to ensure proper z-index and background consistency */}
+      {/* Wrapper ensures stacking context for z-index overlapping */}
       <div className="relative z-20 bg-[#FDFCF9]">
         
-        {/* 3. Social Proof Ticker */}
+        {/* 3. Social Proof - Building Trust immediately */}
         <TrustTicker />
         
-        {/* 4. Leadership - High Priority Visual Storytelling */}
+        {/* 4. Philosophy - The 'Why' (Sticky Scroll Effect) */}
+        {/* This adds the "Heavy UI" feel you requested */}
+        <Philosophy />
+        
+        {/* 5. Leadership - The Human Connection */}
         <Leadership />
 
-        {/* 5. Legacy Section - Dark Theme High Contrast */}
+        {/* 6. Legacy Section - Dark Mode Contrast */}
         <Legacy />
         
-        {/* 6. Initiatives - Impact Visualization */}
+        {/* 7. Initiatives - Data & Impact Visualization */}
         <Initiatives />
         
-        {/* 7. Footer - Final Brand Touchpoint */}
-        <footer className="py-24 bg-earth text-center border-t border-white/10">
-          <div className="flex items-center justify-center gap-3 mb-6 opacity-80">
-            <div className="w-8 h-8 bg-gold rotate-45 transition-transform hover:rotate-90 duration-700" />
-          </div>
-          <div className="text-gold text-3xl font-serif mb-6">Sparkling Era Global Foundation</div>
-          <p className="text-white/40 text-[10px] uppercase tracking-[0.4em] font-bold">
-            © 2026 Building Wealth with Dharma
-          </p>
-        </footer>
+        {/* 8. Contact - Premium Concierge Form */}
+        <Contact />
+
+        {/* 9. Mega Footer - Professional Site Map */}
+        <Footer />
+        
       </div>
     </main>
   );
