@@ -47,29 +47,57 @@ export function Contact() {
           </div>
         </div>
 
-        {/* Minimalist Form */}
-        <form onSubmit={(e) => e.preventDefault()} className="bg-white/5 backdrop-blur-sm p-10 rounded-[3rem] border border-white/10 space-y-8">            <div className="grid grid-cols-2 gap-6">
+        {/* Minimalist Form - FIXED HYDRATION ERRORS */}
+        <form 
+          onSubmit={(e) => e.preventDefault()} 
+          className="bg-white/5 backdrop-blur-sm p-10 rounded-[3rem] border border-white/10 space-y-8"
+        >            
+            <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-gold font-bold">First Name</label>
-                    <input type="text" className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-gold transition-colors" placeholder="Arjun" />
+                    <input 
+                      suppressHydrationWarning
+                      type="text" 
+                      className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-gold transition-colors" 
+                      placeholder="Arjun" 
+                    />
                 </div>
                 <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-gold font-bold">Last Name</label>
-                    <input type="text" className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-gold transition-colors" placeholder="Mehta" />
+                    <input 
+                      suppressHydrationWarning
+                      type="text" 
+                      className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-gold transition-colors" 
+                      placeholder="Mehta" 
+                    />
                 </div>
             </div>
             
             <div className="space-y-2">
                 <label className="text-xs uppercase tracking-widest text-gold font-bold">Email Address</label>
-                <input type="email" className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-gold transition-colors" placeholder="arjun@example.com" />
+                <input 
+                  suppressHydrationWarning
+                  type="email" 
+                  className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-gold transition-colors" 
+                  placeholder="arjun@example.com" 
+                />
             </div>
 
             <div className="space-y-2">
                 <label className="text-xs uppercase tracking-widest text-gold font-bold">Message</label>
-                <textarea rows={4} className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-gold transition-colors resize-none" placeholder="I am interested in..." />
+                <textarea 
+                  suppressHydrationWarning
+                  rows={4} 
+                  className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-gold transition-colors resize-none" 
+                  placeholder="I am interested in..." 
+                />
             </div>
 
-            <button type="submit" className="w-full bg-gold text-earth py-5 rounded-xl font-bold uppercase tracking-[0.2em] hover:bg-white transition-colors flex items-center justify-center gap-3">
+            <button 
+              suppressHydrationWarning
+              type="submit" 
+              className="w-full bg-gold text-earth py-5 rounded-xl font-bold uppercase tracking-[0.2em] hover:bg-white transition-colors flex items-center justify-center gap-3"
+            >
                 Send Request <ArrowRight size={18} />
             </button>
         </form>

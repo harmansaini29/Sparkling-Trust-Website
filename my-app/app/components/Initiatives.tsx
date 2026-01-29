@@ -52,7 +52,8 @@ export function Initiatives() {
             </div>
             <h3 className="text-3xl font-serif text-earth mb-2">Satvik Wealth</h3>
             <p className="text-earth/50 text-sm leading-relaxed">Investing strictly in companies that align with Dharmic values—non-harming and sustainable.</p>
-            <button className="mt-4 px-6 py-2 rounded-full border border-black/10 text-xs font-bold uppercase tracking-widest hover:bg-earth hover:text-white transition-colors">View Portfolio</button>
+            {/* FIXED BUTTON HERE */}
+            <button suppressHydrationWarning className="mt-4 px-6 py-2 rounded-full border border-black/10 text-xs font-bold uppercase tracking-widest hover:bg-earth hover:text-white transition-colors">View Portfolio</button>
           </motion.div>
 
           <motion.div variants={itemVariants} className="relative overflow-hidden rounded-[2.5rem] bg-[#F5F5F0] p-8 flex flex-col justify-center hover:bg-[#EBEBE5] transition-colors">

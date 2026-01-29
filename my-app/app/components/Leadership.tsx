@@ -1,3 +1,4 @@
+"use client";
 import { ArrowRight, ShieldCheck, Landmark } from "lucide-react";
 import Image from "next/image";
 
@@ -12,28 +13,22 @@ export function Leadership() {
         {/* Visual Side */}
         <div className="relative group">
           <div className="relative rounded-[3rem] overflow-hidden aspect-[4/5] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] bg-zinc-100">
-            
-            {/* CLIENT PHOTO */}
             <div className="relative w-full h-full">
                 <Image 
                   src="/founder.jpg" 
                   alt="Rahul Mane - Founder"
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw" // <--- FIXES THE WARNING
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover scale-105 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0"
                 />
             </div>
-
-            {/* Dark Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90" />
-            
             <div className="absolute bottom-12 left-10 text-white">
               <h2 className="text-5xl font-serif leading-none mb-2">Rahul Mane</h2>
               <p className="text-gold text-[10px] uppercase tracking-[0.4em] font-bold">Founder & Chairperson</p>
             </div>
           </div>
 
-          {/* Floating Stat Badge */}
           <div className="absolute -top-12 -right-8 bg-white/90 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-2xl border border-white flex flex-col items-center animate-bounce-slow">
             <span className="block text-6xl font-serif font-bold text-gold">12<span className="text-3xl">+</span></span>
             <span className="text-[10px] uppercase font-black tracking-widest text-earth/30 mt-2">Years Exp.</span>
@@ -51,7 +46,8 @@ export function Leadership() {
           </div>
 
           <div className="pl-8 border-l-2 border-gold/20">
-            <p className="text-xl text-earth/60 font-light leading-relaxed">
+            {/* TEXT FIX: Darker text-earth/90 for visibility */}
+            <p className="text-xl text-earth/90 font-medium leading-relaxed">
               "True wealth is not just accumulation, but distribution." Blending over a decade of market expertise with a profound commitment to social welfare, Rahul leads the foundation's mission.
             </p>
           </div>
@@ -66,14 +62,14 @@ export function Leadership() {
                   <stat.icon size={20} />
                 </div>
                 <div>
-                  <div className="text-[9px] uppercase font-bold text-earth/30 tracking-wider">{stat.label}</div>
+                  <div className="text-[9px] uppercase font-bold text-earth/40 tracking-wider">{stat.label}</div>
                   <div className="font-bold text-lg text-earth">{stat.val}</div>
                 </div>
               </div>
             ))}
           </div>
 
-          <button className="flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-earth border-b border-gold/0 hover:border-gold transition-all py-2 group">
+          <button suppressHydrationWarning className="flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-earth border-b border-gold/0 hover:border-gold transition-all py-2 group">
             Read Full Biography <ArrowRight size={16} className="text-gold group-hover:translate-x-2 transition-transform" />
           </button>
         </div>

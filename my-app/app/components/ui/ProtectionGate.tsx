@@ -4,14 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Lock, Unlock, ArrowRight, ShieldCheck } from "lucide-react";
 
 // --- CONFIGURATION ---
-const ACCESS_CODE = "777"; // Simple client-side code (Change this!)
+const ACCESS_CODE = "777"; 
 
 export function ProtectionGate({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
 
-  // Check session storage to keep user logged in during session
   useEffect(() => {
     const sessionAuth = sessionStorage.getItem("sparkling_auth");
     if (sessionAuth === "true") setIsAuthenticated(true);
@@ -24,7 +23,7 @@ export function ProtectionGate({ children }: { children: React.ReactNode }) {
       sessionStorage.setItem("sparkling_auth", "true");
     } else {
       setError(true);
-      setTimeout(() => setError(false), 1000); // Shake animation reset
+      setTimeout(() => setError(false), 1000);
     }
   };
 
@@ -34,7 +33,6 @@ export function ProtectionGate({ children }: { children: React.ReactNode }) {
 
   return (
     <section className="min-h-screen bg-earth flex items-center justify-center p-6 relative overflow-hidden">
-      {/* Background Ambience */}
       <div className="absolute inset-0 bg-[url('/india-pattern.png')] opacity-5" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 blur-[100px] rounded-full pointer-events-none" />
 
@@ -61,6 +59,7 @@ export function ProtectionGate({ children }: { children: React.ReactNode }) {
           <form onSubmit={handleUnlock} className="space-y-4">
             <div className="relative group">
               <input 
+                suppressHydrationWarning
                 type="password" 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -71,6 +70,7 @@ export function ProtectionGate({ children }: { children: React.ReactNode }) {
             </div>
 
             <button 
+              suppressHydrationWarning
               type="submit"
               className="w-full bg-gold text-earth font-bold uppercase tracking-widest py-4 rounded-xl hover:bg-white transition-colors flex items-center justify-center gap-2"
             >

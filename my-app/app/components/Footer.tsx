@@ -1,10 +1,5 @@
+import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
-
-const links = {
-    Company: ["About Us", "Leadership", "Careers", "Press Media"],
-    Initiatives: ["Financial Literacy", "Satvik Wealth", "Rural Growth", "Zero Debt"],
-    Legal: ["Privacy Policy", "Terms of Service", "Trust Deed", "Compliance"],
-};
 
 export function Footer() {
   return (
@@ -32,20 +27,34 @@ export function Footer() {
                 </div>
             </div>
 
-            {/* Links Block */}
+            {/* Links Block - NOW CONNECTED TO REAL PAGES */}
             <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8">
-                {Object.entries(links).map(([category, items]) => (
-                    <div key={category}>
-                        <h4 className="text-gold font-bold uppercase tracking-widest text-xs mb-6">{category}</h4>
-                        <ul className="space-y-4">
-                            {items.map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-sm text-white/60 hover:text-white transition-colors">{item}</a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
+                <div>
+                    <h4 className="text-gold font-bold uppercase tracking-widest text-xs mb-6">Company</h4>
+                    <ul className="space-y-4 text-sm text-white/60">
+                        <li><Link href="/mission" className="hover:text-white transition-colors">Our Mission</Link></li>
+                        <li><Link href="/legacy" className="hover:text-white transition-colors">Legacy & History</Link></li>
+                        <li><Link href="/contact" className="hover:text-white transition-colors">Contact Support</Link></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 className="text-gold font-bold uppercase tracking-widest text-xs mb-6">Initiatives</h4>
+                    <ul className="space-y-4 text-sm text-white/60">
+                        <li><Link href="/initiatives" className="hover:text-white transition-colors">Financial Literacy</Link></li>
+                        <li><Link href="/projects" className="hover:text-white transition-colors">Satvik Wealth</Link></li>
+                        <li><Link href="/initiatives" className="hover:text-white transition-colors">Rural Growth</Link></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 className="text-gold font-bold uppercase tracking-widest text-xs mb-6">Legal</h4>
+                    <ul className="space-y-4 text-sm text-white/60">
+                        <li><Link href="/compliance" className="hover:text-white transition-colors">Compliance Docs</Link></li>
+                        <li><Link href="/compliance" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                        <li><Link href="/compliance" className="hover:text-white transition-colors">Terms of Service</Link></li>
+                    </ul>
+                </div>
             </div>
         </div>
 

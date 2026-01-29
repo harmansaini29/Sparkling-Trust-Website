@@ -46,15 +46,20 @@ export function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <Link href="/contact" className="hidden lg:flex group relative overflow-hidden bg-earth text-white px-8 py-3 rounded-xl items-center gap-3 text-[11px] uppercase tracking-widest font-bold shadow-xl transition-all hover:shadow-2xl hover:shadow-gold/20 active:scale-95">
+          <Link 
+            href="/contact" 
+            suppressHydrationWarning
+            className="hidden lg:flex group relative overflow-hidden bg-earth text-white px-8 py-3 rounded-xl items-center gap-3 text-[11px] uppercase tracking-widest font-bold shadow-xl transition-all hover:shadow-2xl hover:shadow-gold/20 active:scale-95"
+          >
             <span className="relative z-10 flex items-center gap-2">
               Join Movement <MoveRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-gold to-[#D4A373] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
           </Link>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle - FIXED HERE */}
           <button 
+            suppressHydrationWarning
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden w-10 h-10 rounded-full bg-earth/5 flex items-center justify-center text-earth z-50 active:scale-90 transition-transform"
           >

@@ -6,12 +6,22 @@ export function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate asset loading time (or wait for window.onload)
+    // 1. Lock scroll immediately
+    document.body.style.overflow = "hidden";
+    
+    // 2. Scroll to top
+    window.scrollTo(0, 0);
+
     const timer = setTimeout(() => {
       setIsLoading(false);
-      window.scrollTo(0, 0);
+      // 3. Unlock scroll only after animation
+      document.body.style.overflow = "";
     }, 2500);
-    return () => clearTimeout(timer);
+
+    return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = "";
+    };
   }, []);
 
   return (

@@ -8,12 +8,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)"],
-        serif: ["var(--font-cormorant)"],
+        sans: ["var(--font-inter)", "sans-serif"],
+        serif: ["var(--font-cormorant)", "serif"],
       },
       colors: {
         gold: "#C5A059",
-        earth: "#1A1A1A", // This fixes the 'text-earth' error
+        earth: "#1A1A1A",
       },
       animation: {
         'bounce-slow': 'bounce-slow 4s infinite',

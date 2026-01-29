@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
-import "./globals.css";
+import "./globals.css"; // <--- THIS LINE IS MANDATORY
 import { Preloader } from "./components/ui/Preloader";
 
 const inter = Inter({
@@ -15,8 +15,15 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Sparkling Era Global Foundation | Empowering Bharat",
-  description: "Bridging ancient wisdom with modern financial literacy.",
+  metadataBase: new URL('https://www.sparklingera.org'), 
+  title: {
+    default: "Sparkling Era Global Foundation",
+    template: "%s | Sparkling Era"
+  },
+  description: "Restoring the economic dignity of Bharat by merging the precision of modern finance with the timeless ethics of Dharma.",
+  openGraph: {
+    images: ['/india-pattern.png'],
+  },
 };
 
 export default function RootLayout({
@@ -25,10 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // suppressHydrationWarning fixes the McAfee/Extension errors
-    // style={{ scrollBehavior: 'smooth' }} avoids global CSS conflict
-    <html lang="en" suppressHydrationWarning style={{ scrollBehavior: 'smooth' }}>
-      <body className={`${inter.variable} ${cormorant.variable} antialiased font-sans bg-[#FDFCF9]`}>
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden scroll-smooth">
+      <body className={`${inter.variable} ${cormorant.variable} antialiased font-sans bg-[#FDFCF9] text-earth overflow-x-hidden w-full relative`}>
         <Preloader />
         {children}
       </body>

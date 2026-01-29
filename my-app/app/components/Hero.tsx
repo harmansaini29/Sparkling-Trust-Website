@@ -8,10 +8,8 @@ export function Hero() {
   return (
     <header className="relative w-full min-h-[95vh] flex items-center pt-32 pb-20 overflow-hidden bg-[#FDFCF9]">
       
-      {/* --- PREMIUM BACKGROUND LAYER --- */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 z-0">
-         
-         {/* Animated Map/Pattern Container */}
          <motion.div 
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -24,12 +22,11 @@ export function Hero() {
                   alt="Bharat Heritage Pattern"
                   fill
                   className="object-contain object-right-top opacity-90 select-none"
-                  priority = { true }
+                  priority
                   sizes="(max-width: 768px) 100vw, 75vw"
                 />
             </div>
-
-            {/* Slow Floating Animation on the Image Wrapper */}
+            {/* Ambient Float */}
             <motion.div 
               className="absolute inset-0 pointer-events-none"
               animate={{ y: [0, -20, 0], scale: [1, 1.02, 1] }}
@@ -37,20 +34,14 @@ export function Hero() {
             />
          </motion.div>
          
-         {/* --- PROFESSIONAL GRADIENT MASKS --- */}
-         {/* 1. Horizontal Fade: Solid color on left -> Transparent on right */}
          <div className="absolute inset-0 bg-gradient-to-r from-[#FDFCF9] via-[#FDFCF9]/95 via-40% to-transparent z-10" />
-         
-         {/* 2. Vertical Fade: Softens the bottom edge to blend with next section */}
          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FDFCF9] to-transparent z-10" />
       </div>
 
-      {/* --- GLOW ACCENTS --- */}
-      {/* Golden glow behind the main subject area */}
+      {/* GLOW */}
       <div className="absolute top-1/4 right-0 w-[800px] h-[800px] bg-gold/5 blur-[150px] rounded-full z-0 pointer-events-none" />
 
-
-      {/* --- FOREGROUND CONTENT --- */}
+      {/* CONTENT */}
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center relative z-20">
         
         {/* Left: Typography */}
@@ -60,7 +51,6 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="lg:col-span-7 space-y-8"
         >
-          {/* Badge */}
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/90 border border-gold/30 shadow-sm backdrop-blur-md">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
@@ -69,12 +59,11 @@ export function Hero() {
             <span className="text-[10px] uppercase tracking-[0.3em] font-black text-gold">Heritage Meets Finance</span>
           </div>
 
-          {/* Main Heading */}
-          <h1 className="text-6xl lg:text-[7.5rem] font-serif leading-[0.9] text-earth tracking-tight">
+          {/* FIXED: Font sizing for mobile/tablet */}
+          <h1 className="text-5xl md:text-7xl lg:text-[7.5rem] font-serif leading-[1.1] lg:leading-[0.9] text-earth tracking-tight">
             Empowering <br />
             <span className="text-gold italic relative inline-block">
               Bharat
-              {/* Decorative underline */}
               <svg className="absolute -bottom-2 left-0 w-full h-3 text-gold/20" viewBox="0 0 100 10" preserveAspectRatio="none">
                  <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
               </svg>
@@ -82,16 +71,15 @@ export function Hero() {
             <span className="font-light text-earth/80">Reclaiming Roots</span>
           </h1>
 
-          <p className="text-xl text-earth/70 font-serif italic max-w-lg leading-relaxed border-l-4 border-gold/40 pl-6">
+          <p className="text-lg lg:text-xl text-earth/70 font-serif italic max-w-lg leading-relaxed border-l-4 border-gold/40 pl-6">
             "Restoring the historical economic sovereignty of the Indian spirit through Dharmic principles."
           </p>
 
-          {/* CTAs */}
           <div className="flex flex-wrap gap-5 pt-6">
-            <button className="bg-earth text-white px-10 py-5 rounded-2xl font-bold text-xs tracking-[0.2em] uppercase shadow-xl shadow-earth/10 hover:-translate-y-1 hover:shadow-2xl hover:bg-gold hover:text-earth transition-all duration-300">
+            <button suppressHydrationWarning className="bg-earth text-white px-10 py-5 rounded-2xl font-bold text-xs tracking-[0.2em] uppercase shadow-xl shadow-earth/10 hover:-translate-y-1 hover:shadow-2xl hover:bg-gold hover:text-earth transition-all duration-300">
               Explore Mission
             </button>
-            <button className="flex items-center gap-4 px-6 py-5 rounded-2xl border border-earth/10 bg-white/50 backdrop-blur-md hover:bg-white transition-all group">
+            <button suppressHydrationWarning className="flex items-center gap-4 px-6 py-5 rounded-2xl border border-earth/10 bg-white/50 backdrop-blur-md hover:bg-white transition-all group">
               <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
                 <Play size={18} fill="currentColor" />
               </div>
@@ -105,7 +93,7 @@ export function Hero() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="lg:col-span-5 space-y-6 lg:pl-8 lg:translate-y-8"
+          className="lg:col-span-5 space-y-6 lg:pl-8 lg:translate-y-8 hidden md:block"
         >
            <GlassCard hoverEffect={true} className="p-8 bg-white/70 border-white/50 shadow-lg backdrop-blur-xl">
              <div className="flex items-start gap-5">
