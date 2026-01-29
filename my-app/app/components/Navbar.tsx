@@ -57,7 +57,7 @@ export function Navbar() {
             <div className="absolute inset-0 bg-gradient-to-r from-gold to-[#D4A373] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
           </Link>
 
-          {/* Mobile Menu Toggle - FIXED HERE */}
+          {/* Mobile Menu Toggle */}
           <button 
             suppressHydrationWarning
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -72,23 +72,23 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 bg-earth/95 backdrop-blur-xl lg:hidden flex flex-col items-center justify-center"
           >
             <div className="flex flex-col gap-8 text-center">
               {navLinks.map((item, i) => (
                 <motion.div
                   key={item.name}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
                 >
                   <Link 
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-3xl font-serif text-white hover:text-gold transition-colors"
+                    className="text-4xl font-serif text-white hover:text-gold transition-colors block"
                   >
                     {item.name}
                   </Link>
@@ -96,15 +96,15 @@ export function Navbar() {
               ))}
               
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.4 }}
                 className="mt-8"
               >
                 <Link 
                    href="/contact"
                    onClick={() => setIsMobileMenuOpen(false)}
-                   className="bg-gold text-earth px-10 py-4 rounded-full font-bold uppercase tracking-widest text-sm"
+                   className="bg-gold text-earth px-12 py-5 rounded-full font-bold uppercase tracking-widest text-sm shadow-2xl shadow-gold/20"
                 >
                   Join The Movement
                 </Link>

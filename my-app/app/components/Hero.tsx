@@ -13,7 +13,8 @@ export function Hero() {
          <motion.div 
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.8, ease: "easeOut" }}
+            // Smoother easing curve
+            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute top-0 right-0 w-full lg:w-[75%] h-full"
          >
             <div className="relative w-full h-full">
@@ -48,7 +49,8 @@ export function Hero() {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          // Custom "Luxurious" Easing
+          transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-7 space-y-8"
         >
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/90 border border-gold/30 shadow-sm backdrop-blur-md">
@@ -59,7 +61,6 @@ export function Hero() {
             <span className="text-[10px] uppercase tracking-[0.3em] font-black text-gold">Heritage Meets Finance</span>
           </div>
 
-          {/* FIXED: Font sizing for mobile/tablet */}
           <h1 className="text-5xl md:text-7xl lg:text-[7.5rem] font-serif leading-[1.1] lg:leading-[0.9] text-earth tracking-tight">
             Empowering <br />
             <span className="text-gold italic relative inline-block">
@@ -92,7 +93,7 @@ export function Hero() {
         <motion.div 
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-5 space-y-6 lg:pl-8 lg:translate-y-8 hidden md:block"
         >
            <GlassCard hoverEffect={true} className="p-8 bg-white/70 border-white/50 shadow-lg backdrop-blur-xl">

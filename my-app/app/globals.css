@@ -3,12 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-  /* Default Smooth Scroll for the whole document */
   html {
     scroll-behavior: smooth;
+    overflow-x: clip; 
   }
   
-  /* Selection Color (Gold Highlight) */
   ::selection {
     background-color: rgba(197, 160, 89, 0.3);
     color: #1A1A1A;
@@ -16,11 +15,35 @@
 
   body {
     @apply bg-[#FDFCF9] text-earth;
+    position: relative;
+    width: 100%;
+    overflow-x: clip;
+    /* Professional Font Rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* --- 100/100 PREMIUM SCROLLBAR --- */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FDFCF9; 
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #C5A059; /* Gold */
+    border-radius: 10px;
+    border: 2px solid #FDFCF9; /* Padding effect */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #1A1A1A; /* Earth on hover */
   }
 }
 
 @layer utilities {
-  /* Hide Scrollbar but allow scrolling (Optional utility) */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -29,12 +52,10 @@
     scrollbar-width: none;
   }
   
-  /* Ensure 3D transforms work for animations */
   .preserve-3d {
     transform-style: preserve-3d;
   }
   
-  /* Text Balance for better headlines */
   .text-balance {
     text-wrap: balance;
   }

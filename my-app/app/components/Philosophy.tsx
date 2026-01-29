@@ -43,42 +43,43 @@ const PHILOSOPHY_DATA: PhilosophyItem[] = [
 
 export function Philosophy() {
   const containerRef = useRef<HTMLDivElement>(null);
-  // Tuned for perfect pacing - not too fast, not too slow
-  const sectionHeight = "300vh"; 
+  // SMOOTHNESS FACTOR: 400vh gives the user plenty of runway for a slow scroll
+  const sectionHeight = "400vh"; 
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const textScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9]);
+  // Text stays visible longer, only fading slightly at the very end
+  const textOpacity = useTransform(scrollYProgress, [0, 0.9, 1], [1, 1, 0.4]);
+  const textScale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
 
   return (
     <section 
       ref={containerRef} 
-      className="relative bg-[#FDFCF9]"
+      className="relative bg-[#FDFCF9] w-full"
       style={{ height: sectionHeight }}
     >
-      <div className="sticky top-0 h-screen flex flex-col lg:flex-row items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-screen w-full flex flex-col lg:flex-row items-center justify-center overflow-hidden">
         
-        {/* Background Animation */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none">
+        {/* Background Animation - Slow, subtle breathing effect */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
            <motion.div 
               style={{ 
-                opacity: useTransform(scrollYProgress, [0, 1], [0.1, 0.4]),
-                scale: useTransform(scrollYProgress, [0, 1], [1, 1.5])
+                opacity: useTransform(scrollYProgress, [0, 1], [0.1, 0.25]),
+                scale: useTransform(scrollYProgress, [0, 1], [1, 1.1])
               }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[120px]" 
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/10 rounded-full blur-[120px]" 
            />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10 h-full">
+        <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-20 h-full">
           
-          {/* Static Text Side - Fades out as you scroll */}
+          {/* Static Text Side */}
           <motion.div 
             style={{ opacity: textOpacity, scale: textScale }}
-            className="flex flex-col justify-center h-[30vh] lg:h-full lg:max-h-[80vh] pointer-events-none lg:pointer-events-auto mt-20 lg:mt-0"
+            className="flex flex-col justify-center h-[30vh] lg:h-full lg:max-h-[80vh] pointer-events-none lg:pointer-events-auto mt-20 lg:mt-0 order-1 lg:order-1"
           >
             <div className="space-y-4 lg:space-y-8 text-center lg:text-left">
               <span className="inline-block py-1 px-3 border border-gold/30 rounded-full text-gold text-[10px] uppercase tracking-[0.3em] font-black bg-white/50 backdrop-blur-md">
@@ -100,7 +101,7 @@ export function Philosophy() {
           </motion.div>
 
           {/* Dynamic Scroll Cards */}
-          <div className="relative w-full h-[50vh] lg:h-[600px] flex items-center justify-center">
+          <div className="relative w-full h-[50vh] lg:h-[600px] flex items-center justify-center order-2 lg:order-2">
             {PHILOSOPHY_DATA.map((item, i) => (
                 <Card 
                   key={item.id} 
@@ -119,8 +120,8 @@ export function Philosophy() {
 
 const Card = ({ data, progress, total, index }: { data: PhilosophyItem; progress: MotionValue<number>; total: number; index: number }) => {
   const step = 1 / total; 
-  // High overlap prevents "blank space" gaps between cards
-  const overlap = 0.15;
+  // DEEP OVERLAP: 0.25 ensures perfectly seamless blending
+  const overlap = 0.25; 
   
   const enterStart = Math.max(0, (index * step) - overlap);
   const enterEnd   = index * step + overlap;
@@ -129,31 +130,31 @@ const Card = ({ data, progress, total, index }: { data: PhilosophyItem; progress
 
   const range = [enterStart, enterEnd, exitStart, exitEnd];
   
-  // Logic: First card starts visible. Last card stays visible. Middle cards fade in/out.
   const opacity = useTransform(progress, range, 
     index === 0 ? [1, 1, 1, 0] :      
     index === total - 1 ? [0, 1, 1, 1] : 
     [0, 1, 1, 0]                     
   );
 
+  // MICRO MOVEMENT: 30px is subtle enough to feel like "levitation"
   const y = useTransform(progress, range, 
-    index === 0 ? [0, 0, 0, -50] : 
-    index === total - 1 ? [50, 0, 0, 0] : 
-    [50, 0, 0, -50]
+    index === 0 ? [0, 0, 0, -30] : 
+    index === total - 1 ? [30, 0, 0, 0] : 
+    [30, 0, 0, -30]
   );
 
   const scale = useTransform(progress, range, 
-    index === 0 ? [1, 1, 1, 0.95] : 
-    index === total - 1 ? [0.95, 1, 1, 1] : 
-    [0.95, 1, 1, 0.95]
+    index === 0 ? [1, 1, 1, 0.98] : 
+    index === total - 1 ? [0.98, 1, 1, 1] : 
+    [0.98, 1, 1, 0.98]
   );
 
   return (
     <motion.div style={{ opacity, y, scale }} className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-4">
-      <GlassCard className="w-full max-w-sm lg:max-w-md bg-white/95 backdrop-blur-xl border border-white/60 shadow-2xl p-0 overflow-hidden group">
+      <GlassCard className="w-full max-w-sm lg:max-w-md bg-[#FDFCF9] backdrop-blur-xl border border-white/60 shadow-2xl p-0 overflow-hidden group hover:border-gold/40 transition-colors duration-500">
         
-        {/* Header with Pattern */}
         <div className="h-24 lg:h-32 w-full relative flex items-center justify-center overflow-hidden transition-colors duration-500" style={{ backgroundColor: data.color }}>
+             <div className="absolute inset-0 bg-black/5" />
              <Image 
                src="/india-pattern.png" 
                alt="Pattern" 
@@ -166,7 +167,7 @@ const Card = ({ data, progress, total, index }: { data: PhilosophyItem; progress
              </div>
         </div>
         
-        <div className="p-6 lg:p-8 space-y-3 lg:space-y-4">
+        <div className="p-6 lg:p-8 space-y-3 lg:space-y-4 bg-white/50">
             <div>
                 <span className="text-[9px] lg:text-[10px] uppercase tracking-widest font-bold text-earth/60">
                     0{data.id} — {data.tagline}

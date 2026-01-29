@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
-import "./globals.css"; // <--- THIS LINE IS MANDATORY
+import "./globals.css";
 import { Preloader } from "./components/ui/Preloader";
 
 const inter = Inter({
@@ -32,8 +32,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="overflow-x-hidden scroll-smooth">
-      <body className={`${inter.variable} ${cormorant.variable} antialiased font-sans bg-[#FDFCF9] text-earth overflow-x-hidden w-full relative`}>
+    // Replaced overflow-x-hidden with overflow-x-clip logic from globals.css
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <body className={`${inter.variable} ${cormorant.variable} antialiased font-sans bg-[#FDFCF9] text-earth w-full relative`}>
         <Preloader />
         {children}
       </body>
