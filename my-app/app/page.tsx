@@ -7,6 +7,8 @@ import { Initiatives } from "./components/Initiatives";
 import { Leadership } from "./components/Leadership";
 import { Contact } from "./components/Contact"; 
 import { Footer } from "./components/Footer";   
+import VoicesSection from "./components/Reviews";
+import PillarsOfImpact from "./components/Project";
 
 export default function Home() {
   return (
@@ -36,6 +38,10 @@ export default function Home() {
         
         {/* 7. Initiatives */}
         <Initiatives />
+
+        <PillarsOfImpact />
+
+        <VoicesSection />
         
         {/* 8. Contact */}
         <Contact />

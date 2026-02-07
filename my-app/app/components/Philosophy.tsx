@@ -1,186 +1,181 @@
 "use client";
 import { useRef } from "react";
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
-import { GlassCard } from "./ui/GlassCard"; 
-import { Heart, Globe, Lightbulb, ArrowRight } from "lucide-react";
-import Image from "next/image"; 
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Heart, Globe, Lightbulb, ArrowRight, Sparkles } from "lucide-react";
 
-interface PhilosophyItem {
-  id: number;
-  title: string;
-  tagline: string;
-  description: string;
-  icon: React.ReactNode;
-  color: string;
-}
-
-const PHILOSOPHY_DATA: PhilosophyItem[] = [
+const PHILOSOPHY_DATA = [
   {
     id: 1,
     title: "Universal Welfare",
-    tagline: "Sarve Bhavantu Sukhinah",
-    description: "Moving beyond profit maximization to maximize global well-being. True wealth is not measured in currency, but in the happiness of the community served.",
-    icon: <Globe className="w-8 h-8 text-white" />,
-    color: "#C5A059", // Gold
+    subtitle: "Sarve Bhavantu Sukhinah",
+    desc: "True wealth is measured not in currency, but in the collective happiness of the community served.",
+    icon: <Globe className="w-8 h-8 md:w-10 md:h-10 text-[#C5A059]" />,
+    color: "#C5A059",
   },
   {
     id: 2,
     title: "Compassionate Capital",
-    tagline: "Money as Energy",
-    description: "We view capital as a flowing energy. We channel this energy strictly into ventures that heal the planet, restore dignity, and empower the marginalized.",
-    icon: <Heart className="w-8 h-8 text-white" />,
-    color: "#D4A373", // Earthy
+    subtitle: "Energy in Motion",
+    desc: "Capital is energy. We channel it strictly into ventures that heal the planet and restore dignity.",
+    icon: <Heart className="w-8 h-8 md:w-10 md:h-10 text-[#D4A373]" />,
+    color: "#D4A373",
   },
   {
     id: 3,
     title: "Vedic Innovation",
-    tagline: "Ancient Roots, Modern Tech",
-    description: "Integrating 5,000 years of Dharmic ethics with cutting-edge fintech. Algorithms should serve humanity, not enslave it.",
-    icon: <Lightbulb className="w-8 h-8 text-white" />,
-    color: "#A98467", // Muted Brown
+    subtitle: "Ancient Roots, Modern Tech",
+    desc: "Integrating 5,000 years of ethics with fintech. Algorithms should serve humanity, not enslave it.",
+    icon: <Lightbulb className="w-8 h-8 md:w-10 md:h-10 text-[#A98467]" />,
+    color: "#A98467",
   },
 ];
 
 export function Philosophy() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  // SMOOTHNESS FACTOR: 400vh gives the user plenty of runway for a slow scroll
-  const sectionHeight = "400vh"; 
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
+    target: scrollRef,
   });
 
-  // Text stays visible longer, only fading slightly at the very end
-  const textOpacity = useTransform(scrollYProgress, [0, 0.9, 1], [1, 1, 0.4]);
-  const textScale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
+  // Horizontal movement for the cards
+  // We stop at -100% (or similar) to let the user "finish" the cards before the CTA reveal
+  const x = useTransform(scrollYProgress, [0, 0.8], ["0%", "-60%"]);
+  
+  // Parallax background text
+  const bgTextX = useTransform(scrollYProgress, [0, 1], ["10%", "-20%"]);
 
   return (
-    <section 
-      ref={containerRef} 
-      className="relative bg-[#FDFCF9] w-full"
-      style={{ height: sectionHeight }}
-    >
-      <div className="sticky top-0 h-screen w-full flex flex-col lg:flex-row items-center justify-center overflow-hidden">
-        
-        {/* Background Animation - Slow, subtle breathing effect */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-           <motion.div 
-              style={{ 
-                opacity: useTransform(scrollYProgress, [0, 1], [0.1, 0.25]),
-                scale: useTransform(scrollYProgress, [0, 1], [1, 1.1])
-              }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/10 rounded-full blur-[120px]" 
-           />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-20 h-full">
+    <div ref={scrollRef} className="relative bg-[#FDFCF9]">
+      {/* 1. HORIZONTAL SCROLL SECTION */}
+      <div className="h-[300vh] relative">
+        <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
           
-          {/* Static Text Side */}
+          {/* Parallax Background Text */}
           <motion.div 
-            style={{ opacity: textOpacity, scale: textScale }}
-            className="flex flex-col justify-center h-[30vh] lg:h-full lg:max-h-[80vh] pointer-events-none lg:pointer-events-auto mt-20 lg:mt-0 order-1 lg:order-1"
+            style={{ x: bgTextX }}
+            className="absolute inset-0 flex items-center whitespace-nowrap z-0 pointer-events-none opacity-[0.03]"
           >
-            <div className="space-y-4 lg:space-y-8 text-center lg:text-left">
-              <span className="inline-block py-1 px-3 border border-gold/30 rounded-full text-gold text-[10px] uppercase tracking-[0.3em] font-black bg-white/50 backdrop-blur-md">
-                Our Core Values
-              </span>
-              <h2 className="text-4xl lg:text-7xl font-serif text-earth leading-[0.9]">
-                The <span className="italic text-gold">Dharma</span> <br /> 
-                of Money.
-              </h2>
-              <p className="hidden lg:block text-earth text-lg leading-relaxed max-w-md font-medium">
-                We believe wealth is not just currency, but a tool for liberation. 
-                <br /><br />
-                Scroll down to explore how we bridge ancient wisdom with modern economics.
-              </p>
-              <p className="lg:hidden text-earth text-sm max-w-xs mx-auto font-medium">
-                Bridging ancient wisdom with modern economics.
-              </p>
-            </div>
+            <h1 className="text-[25vw] font-black uppercase tracking-tighter text-black">
+              Dharma Wealth Ethics
+            </h1>
           </motion.div>
 
-          {/* Dynamic Scroll Cards */}
-          <div className="relative w-full h-[50vh] lg:h-[600px] flex items-center justify-center order-2 lg:order-2">
-            {PHILOSOPHY_DATA.map((item, i) => (
-                <Card 
-                  key={item.id} 
-                  data={item} 
-                  progress={scrollYProgress} 
-                  total={PHILOSOPHY_DATA.length}
-                  index={i} 
-                />
-            ))}
+          {/* Top Header Information */}
+          <div className="absolute top-8 md:top-12 left-6 md:left-12 z-20">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="space-y-2"
+            >
+              <span className="text-[#C5A059] text-xs font-black uppercase tracking-[0.3em] block">Our Ethos</span>
+              <h2 className="text-4xl md:text-6xl font-serif text-[#2a2a2a]">The Philosophy</h2>
+            </motion.div>
+          </div>
+
+          {/* The Horizontal Track */}
+          <div className="relative z-10 w-full">
+            <motion.div 
+              style={{ x }} 
+              className="flex gap-6 md:gap-12 px-6 md:px-12 items-center"
+            >
+              {PHILOSOPHY_DATA.map((item) => (
+                <Card key={item.id} item={item} />
+              ))}
+              {/* Spacer to allow the last card to be fully seen before the CTA reveal */}
+              <div className="flex-shrink-0 w-[10vw] md:w-[20vw]" />
+            </motion.div>
+          </div>
+
+          {/* Custom Progress Bar */}
+          <div className="absolute bottom-12 left-6 right-6 md:left-12 md:right-12 h-[2px] bg-black/5 z-20">
+            <motion.div 
+              style={{ scaleX: scrollYProgress, originX: 0 }}
+              className="h-full bg-[#C5A059] w-full"
+            />
           </div>
         </div>
       </div>
-    </section>
+
+      {/* 2. THE BOTTOM CTA (The "Sick" Reveal) */}
+      <section className="relative h-screen w-full flex items-center justify-center bg-[#2a2a2a] overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center px-6 z-10"
+        >
+          <div className="inline-block p-3 rounded-full bg-white/5 border border-white/10 mb-8">
+            <Sparkles className="text-[#C5A059] w-6 h-6" />
+          </div>
+          <h2 className="text-5xl md:text-8xl font-serif text-white leading-tight mb-8">
+            Join the <br /> <span className="italic text-[#C5A059]">Movement.</span>
+          </h2>
+          <p className="text-white/60 text-lg md:text-xl max-w-xl mx-auto mb-12 font-medium">
+            Be part of a financial ecosystem that prioritizes human flourishing over mindless accumulation.
+          </p>
+          
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative px-10 py-5 bg-[#C5A059] text-white rounded-full font-bold uppercase tracking-widest overflow-hidden transition-all"
+          >
+            <span className="relative z-10 flex items-center gap-3">
+              Get Started Now <ArrowRight size={18} />
+            </span>
+            <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+          </motion.button>
+        </motion.div>
+
+        {/* Abstract Background for CTA */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-10" />
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#C5A059]/20 rounded-full blur-[120px] animate-pulse" />
+        </div>
+      </section>
+    </div>
   );
 }
 
-const Card = ({ data, progress, total, index }: { data: PhilosophyItem; progress: MotionValue<number>; total: number; index: number }) => {
-  const step = 1 / total; 
-  // DEEP OVERLAP: 0.25 ensures perfectly seamless blending
-  const overlap = 0.25; 
-  
-  const enterStart = Math.max(0, (index * step) - overlap);
-  const enterEnd   = index * step + overlap;
-  const exitStart  = Math.min(1, ((index + 1) * step) - overlap);
-  const exitEnd    = Math.min(1, ((index + 1) * step) + overlap);
-
-  const range = [enterStart, enterEnd, exitStart, exitEnd];
-  
-  const opacity = useTransform(progress, range, 
-    index === 0 ? [1, 1, 1, 0] :      
-    index === total - 1 ? [0, 1, 1, 1] : 
-    [0, 1, 1, 0]                     
-  );
-
-  // MICRO MOVEMENT: 30px is subtle enough to feel like "levitation"
-  const y = useTransform(progress, range, 
-    index === 0 ? [0, 0, 0, -30] : 
-    index === total - 1 ? [30, 0, 0, 0] : 
-    [30, 0, 0, -30]
-  );
-
-  const scale = useTransform(progress, range, 
-    index === 0 ? [1, 1, 1, 0.98] : 
-    index === total - 1 ? [0.98, 1, 1, 1] : 
-    [0.98, 1, 1, 0.98]
-  );
-
+const Card = ({ item }: { item: typeof PHILOSOPHY_DATA[0] }) => {
   return (
-    <motion.div style={{ opacity, y, scale }} className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-4">
-      <GlassCard className="w-full max-w-sm lg:max-w-md bg-[#FDFCF9] backdrop-blur-xl border border-white/60 shadow-2xl p-0 overflow-hidden group hover:border-gold/40 transition-colors duration-500">
-        
-        <div className="h-24 lg:h-32 w-full relative flex items-center justify-center overflow-hidden transition-colors duration-500" style={{ backgroundColor: data.color }}>
-             <div className="absolute inset-0 bg-black/5" />
-             <Image 
-               src="/india-pattern.png" 
-               alt="Pattern" 
-               fill 
-               className="object-cover opacity-40 mix-blend-overlay"
-             />
-             <div className="absolute inset-0 bg-black/10" />
-             <div className="relative z-10 p-3 lg:p-4 bg-white/20 rounded-full backdrop-blur-sm border border-white/30 shadow-inner">
-                {data.icon}
-             </div>
+    <motion.div 
+      className="flex-shrink-0 w-[85vw] md:w-[500px] lg:w-[600px] aspect-[4/5] md:aspect-square lg:aspect-[16/10] bg-white rounded-[2rem] p-8 md:p-12 flex flex-col justify-between border border-black/5 shadow-sm relative group overflow-hidden"
+    >
+      {/* Dynamic Background Hover Effect */}
+      <div 
+        className="absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500"
+        style={{ backgroundColor: item.color }}
+      />
+      
+      <div className="relative z-10 flex justify-between items-start">
+        <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-[#FDFCF9] border border-black/5 flex items-center justify-center shadow-inner group-hover:border-[#C5A059]/30 transition-colors">
+          {item.icon}
         </div>
-        
-        <div className="p-6 lg:p-8 space-y-3 lg:space-y-4 bg-white/50">
-            <div>
-                <span className="text-[9px] lg:text-[10px] uppercase tracking-widest font-bold text-earth/60">
-                    0{data.id} — {data.tagline}
-                </span>
-                <h3 className="text-2xl lg:text-3xl font-serif text-earth mt-1">{data.title}</h3>
-            </div>
-            <p className="text-earth font-medium leading-relaxed text-xs lg:text-sm">{data.description}</p>
-            
-            <button suppressHydrationWarning className="pt-2 lg:pt-4 flex items-center gap-2 text-[10px] lg:text-xs font-bold uppercase tracking-widest text-gold group-hover:gap-4 transition-all">
-                Read Deep Dive <ArrowRight size={14} />
-            </button>
+        <span className="text-6xl md:text-8xl font-serif text-black/[0.03] font-black group-hover:text-[#C5A059]/10 transition-colors">
+          0{item.id}
+        </span>
+      </div>
+
+      <div className="relative z-10 space-y-4">
+        <div className="space-y-1">
+          <p className="text-[#C5A059] text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">
+            {item.subtitle}
+          </p>
+          <h3 className="text-3xl md:text-5xl font-serif text-[#2a2a2a]">
+            {item.title}
+          </h3>
         </div>
-      </GlassCard>
+        <p className="text-gray-500 text-sm md:text-lg leading-relaxed max-w-md">
+          {item.desc}
+        </p>
+      </div>
+
+      <div className="relative z-10 pt-6 border-t border-black/5 flex items-center justify-between">
+        <button className="text-xs font-black uppercase tracking-widest text-[#2a2a2a] group-hover:text-[#C5A059] transition-colors flex items-center gap-2">
+          Read Manifesto <ArrowRight size={14} />
+        </button>
+      </div>
     </motion.div>
   );
 };
