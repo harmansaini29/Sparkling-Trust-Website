@@ -16,7 +16,7 @@ interface Testimonial {
   type: 'text' | 'image' | 'logo';
 }
 
-// --- Data based on the image ---
+// --- Data ---
 const testimonials: Testimonial[] = [
   {
     id: '1',
@@ -33,7 +33,7 @@ const testimonials: Testimonial[] = [
     role: 'ARTIST',
     location: 'JAIPUR',
     quote: "Sparkling Global Foundation is not just an organization; it is a family to me. It helped me build my business from scratch while staying true to my values.",
-    image: "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", // Textile work context
+    image: "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
     tags: ['IMPACT'],
     icon: <Heart className="w-5 h-5 text-yellow-400 fill-yellow-400" />,
     type: 'image'
@@ -53,7 +53,7 @@ const testimonials: Testimonial[] = [
     role: 'TEACHER',
     location: 'DELHI',
     quote: "I found a community that supports my dreams and honors my heritage. The foundation gave me the tools to lead with confidence. Today, I teach 40 students and help them find their own path.",
-    type: 'logo' // Special styling for the LEAF_RK logo
+    type: 'logo' 
   },
   {
     id: '5',
@@ -70,7 +70,7 @@ const testimonials: Testimonial[] = [
     role: 'FINANCIAL ANALYST',
     location: 'BANGALORE',
     quote: "This foundation bridges the gap between modern finance and ancient wisdom. It is exactly what our generation needed.",
-    image: "https://images.unsplash.com/photo-1536766820879-059fec98ec0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", // Dancer context
+    image: "https://images.unsplash.com/photo-1536766820879-059fec98ec0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
     icon: <Users className="w-6 h-6 text-yellow-500" />,
     type: 'image'
   }
@@ -161,6 +161,7 @@ const VoicesSection: React.FC = () => {
           className="mt-16 text-center"
         >
           <motion.button
+            suppressHydrationWarning={true} 
             whileHover={{ scale: 1.05, backgroundColor: "#fff" }}
             whileTap={{ scale: 0.95 }}
             className="group relative inline-flex items-center gap-2 px-8 py-3 bg-cream-100 border-2 border-yellow-400/50 rounded-full font-lato font-bold text-gray-800 hover:shadow-lg transition-all duration-300"
