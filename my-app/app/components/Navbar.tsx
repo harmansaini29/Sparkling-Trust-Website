@@ -10,6 +10,7 @@ export function Navbar() {
   const navLinks = [
     { name: 'Mission', href: '/mission' },
     { name: 'Ventures', href: '/projects' },
+    { name: 'Gallery', href: '/gallery' }, // <--- ADDED THIS
     { name: 'Legacy', href: '/legacy' },
     { name: 'Compliance', href: '/compliance' },
     { name: 'Contact', href: '/contact' },
