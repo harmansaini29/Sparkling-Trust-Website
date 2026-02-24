@@ -1,76 +1,101 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowUpRight, TrendingUp, Users, Leaf, Shield } from "lucide-react";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
+import { ArrowRight, Target, Users2, Sprout, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 
 export function Initiatives() {
   return (
-    <section className="py-32 bg-[#FDFCF9] relative">
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="max-w-7xl mx-auto px-6"
-      >
-        <div className="mb-20 space-y-4">
-          <span className="text-gold text-xs uppercase tracking-[0.5em] font-black">Our Impact</span>
-          <h2 className="text-5xl lg:text-7xl font-serif text-earth">
-            Global Vision, <br />
-            <span className="italic text-gold">Local Action.</span>
-          </h2>
+    <section className="py-32 bg-[#F9FAFB] relative border-t border-black/5">
+      <div className="max-w-[1400px] mx-auto px-6">
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="max-w-3xl">
+            <span className="text-[#F97316] text-xs font-bold uppercase tracking-[0.4em] mb-4 block">The Sparkling Difference</span>
+            <h2 className="text-5xl md:text-7xl font-serif text-[#064E3B] leading-tight">
+              Executing with <br /> <span className="italic text-[#F97316]">Precision & Purpose</span>
+            </h2>
+          </div>
+          <p className="text-[#064E3B]/60 text-lg max-w-md font-medium leading-relaxed pb-3 border-l-2 border-[#F97316] pl-6">
+            We merge corporate accountability with profound social compassion. Every initiative is a measurable step towards a sovereign economy.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
-          <motion.div variants={itemVariants} className="md:col-span-2 relative group overflow-hidden rounded-[2.5rem] bg-earth text-white p-10 flex flex-col justify-between hover:shadow-2xl transition-all duration-500">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#C5A059_0%,transparent_40%)] opacity-20 group-hover:opacity-40 transition-opacity" />
+        {/* BENTO GRID LAYOUT */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[320px]">
+          
+          {/* Card 1: Large Featured (Spans 2 cols, 2 rows) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="md:col-span-2 md:row-span-2 relative rounded-[2.5rem] overflow-hidden group bg-[#064E3B] text-white p-10 flex flex-col justify-between"
+          >
+            <div className="absolute inset-0 opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700">
+               <Image src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200" fill className="object-cover" alt="Grassroots" />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#064E3B] via-[#064E3B]/80 to-transparent" />
+            
+            <div className="relative z-10 flex justify-between items-start">
+               <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20">
+                 <Users2 className="w-8 h-8 text-[#F97316]" />
+               </div>
+               <span className="px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest border border-white/20">01</span>
+            </div>
             <div className="relative z-10">
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-6 backdrop-blur-md">
-                <TrendingUp className="text-gold" />
-              </div>
-              <h3 className="text-4xl font-serif mb-2">Financial Literacy Drive</h3>
-              <p className="text-white/60 max-w-md">Educating over 50,000 students across rural Bharat about the power of compounding.</p>
+              <h3 className="text-4xl md:text-5xl font-serif font-bold mb-4">Grassroots <br/>Execution</h3>
+              <p className="text-white/70 text-lg max-w-md leading-relaxed">
+                Our volunteers work deep within the rural heartlands, ensuring financial wisdom reaches the last mile without dilution.
+              </p>
             </div>
-            <ArrowUpRight className="self-end text-gold w-10 h-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </motion.div>
 
-          <motion.div variants={itemVariants} className="md:row-span-2 relative overflow-hidden rounded-[2.5rem] border border-black/5 bg-white p-10 hover:border-gold/50 transition-colors duration-500 flex flex-col items-center text-center justify-center gap-6">
-            <div className="w-24 h-24 bg-gold/10 rounded-full flex items-center justify-center animate-bounce-slow">
-              <Leaf size={48} className="text-gold" />
+          {/* Card 2: Standard Box */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
+            className="rounded-[2.5rem] bg-white border border-black/5 p-10 flex flex-col justify-between group hover:shadow-2xl hover:border-[#F97316]/30 transition-all"
+          >
+            <div className="w-14 h-14 bg-[#F9FAFB] rounded-full flex items-center justify-center group-hover:bg-[#F97316]/10 transition-colors">
+              <Target className="w-6 h-6 text-[#F97316]" />
             </div>
-            <h3 className="text-3xl font-serif text-earth mb-2">Satvik Wealth</h3>
-            <p className="text-earth/50 text-sm leading-relaxed">Investing strictly in companies that align with Dharmic values—non-harming and sustainable.</p>
-            {/* FIXED BUTTON HERE */}
-            <button suppressHydrationWarning className="mt-4 px-6 py-2 rounded-full border border-black/10 text-xs font-bold uppercase tracking-widest hover:bg-earth hover:text-white transition-colors">View Portfolio</button>
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="relative overflow-hidden rounded-[2.5rem] bg-[#F5F5F0] p-8 flex flex-col justify-center hover:bg-[#EBEBE5] transition-colors">
-            <Users className="text-earth/20 w-32 h-32 absolute -bottom-10 -right-10" />
-            <h4 className="text-6xl font-serif text-gold font-bold">10k+</h4>
-            <span className="text-earth font-bold uppercase tracking-widest text-sm mt-2">Families Empowered</span>
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="relative overflow-hidden rounded-[2.5rem] bg-gold p-8 flex flex-col justify-between text-earth group">
-            <Shield className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform" />
             <div>
-              <h3 className="text-2xl font-serif font-bold">Zero Debt</h3>
-              <p className="text-earth/70 text-sm mt-1">Our foundation operates on a 100% debt-free model.</p>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#064E3B]/40 mb-2 block">02</span>
+              <h3 className="text-2xl font-serif font-bold text-[#064E3B] mb-3">Measurable Targets</h3>
+              <p className="text-[#064E3B]/60 text-sm leading-relaxed">We don't just act; we measure. Every initiative is backed by data-driven impact assessment and stringent audits.</p>
             </div>
           </motion.div>
+
+          {/* Card 3: Standard Box */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
+            className="rounded-[2.5rem] bg-white border border-black/5 p-10 flex flex-col justify-between group hover:shadow-2xl hover:border-[#F97316]/30 transition-all"
+          >
+            <div className="w-14 h-14 bg-[#F9FAFB] rounded-full flex items-center justify-center group-hover:bg-[#F97316]/10 transition-colors">
+              <ShieldCheck className="w-6 h-6 text-[#F97316]" />
+            </div>
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#064E3B]/40 mb-2 block">03</span>
+              <h3 className="text-2xl font-serif font-bold text-[#064E3B] mb-3">Structured Programs</h3>
+              <p className="text-[#064E3B]/60 text-sm leading-relaxed">Methodically designed curriculums that ensure consistent, high-quality learning outcomes across all demographics.</p>
+            </div>
+          </motion.div>
+
+          {/* Card 4: Wide Strip (Spans 2 cols) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
+            className="md:col-span-2 rounded-[2.5rem] bg-[#F97316] text-white p-10 flex flex-col sm:flex-row justify-between items-start sm:items-center group overflow-hidden relative"
+          >
+            <div className="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
+            <div className="relative z-10 max-w-sm">
+              <span className="text-xs font-bold uppercase tracking-widest text-white/60 mb-2 block">04</span>
+              <h3 className="text-3xl font-serif font-bold mb-3">Holistic Awareness</h3>
+              <p className="text-white/80 text-sm leading-relaxed">Economic empowerment is our core. We believe wealth creation is the first step to social dignity and spiritual freedom.</p>
+            </div>
+            <div className="relative z-10 w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mt-6 sm:mt-0 group-hover:rotate-12 transition-transform">
+              <Sprout className="w-10 h-10 text-white" />
+            </div>
+          </motion.div>
+
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

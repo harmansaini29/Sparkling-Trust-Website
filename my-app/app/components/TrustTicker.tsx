@@ -1,35 +1,43 @@
 "use client";
-import { motion } from "framer-motion";
+import React from "react";
+import { Award, ShieldCheck, HeartHandshake, BookOpen, Users, Leaf } from "lucide-react";
 
-const partners = [
-  "SEBI REGISTERED", "NSE MEMBER", "BSE MEMBER", "NISM CERTIFIED", "GLOBAL TRUST", "ZERO DEBT", "SATVIK WEALTH"
+const TRUST_METRICS = [
+  { text: "80G & 12A Certified", icon: <ShieldCheck size={20} /> },
+  { text: "Registered Section 8 NGO", icon: <Award size={20} /> },
+  { text: "56,000+ Lives Impacted", icon: <Users size={20} /> },
+  { text: "100% Transparency", icon: <HeartHandshake size={20} /> },
+  { text: "Grassroots Financial Education", icon: <BookOpen size={20} /> },
+  { text: "Sustainable Empowerment", icon: <Leaf size={20} /> },
 ];
 
 export function TrustTicker() {
-  return (
-    <div className="bg-gold py-4 overflow-hidden flex relative z-20 border-y border-black/10">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/noise.png')] opacity-20" />
-      
-      {/* PROFESSIONAL GRADIENT MASKS (The 100/100 Touch) */}
-      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gold to-transparent z-10" />
-      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gold to-transparent z-10" />
+  // We duplicate the array so the CSS marquee can seamlessly loop without gaps
+  const doubledMetrics = [...TRUST_METRICS, ...TRUST_METRICS, ...TRUST_METRICS];
 
-      {/* Moving Container */}
-      <motion.div 
-        className="flex gap-16 items-center whitespace-nowrap"
-        animate={{ x: [0, -1000] }}
-        transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-      >
-        {/* Tripled list for seamless infinite loop */}
-        {[...partners, ...partners, ...partners].map((item, i) => (
-          <div key={i} className="flex items-center gap-4 group cursor-default">
-            <span className="w-2 h-2 rounded-full bg-earth/20 group-hover:bg-earth transition-colors" />
-            <span className="text-earth font-bold uppercase tracking-[0.3em] text-sm group-hover:scale-110 transition-transform">
-              {item}
+  return (
+    <div className="bg-[#064E3B] border-y border-white/10 overflow-hidden py-4 md:py-5 relative z-30">
+      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.05]" />
+      
+      {/* Edge Gradients for smooth fade in/out */}
+      <div className="absolute top-0 left-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#064E3B] to-transparent z-10" />
+      <div className="absolute top-0 right-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#064E3B] to-transparent z-10" />
+
+      {/* GPU-Accelerated Marquee Container */}
+      <div className="flex w-max animate-marquee hover:[animation-play-state:paused] transition-all">
+        {doubledMetrics.map((metric, index) => (
+          <div 
+            key={index} 
+            className="flex items-center gap-3 px-8 md:px-12 text-white/80 hover:text-[#F97316] transition-colors cursor-default"
+          >
+            <span className="text-[#F97316]">{metric.icon}</span>
+            <span className="text-sm md:text-base font-bold uppercase tracking-widest whitespace-nowrap">
+              {metric.text}
             </span>
+            <div className="w-1.5 h-1.5 rounded-full bg-white/20 ml-8 md:ml-12" />
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
