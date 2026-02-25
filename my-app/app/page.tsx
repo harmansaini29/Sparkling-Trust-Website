@@ -1,14 +1,6 @@
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { TrustTicker } from "./components/TrustTicker";
-<<<<<<< Updated upstream
-import { Philosophy } from "./components/Philosophy"; 
-import { Legacy } from "./components/Legacy";
-import { Initiatives } from "./components/Initiatives";
-import { Leadership } from "./components/Leadership";
-import { Contact } from "./components/Contact"; 
-import { Footer } from "./components/Footer";   
-=======
 import { ImpactCounters } from "./components/ImpactCounters";
 import PillarsOfImpact from "./components/Project";
 import { PhotoSlider } from "./components/PhotoSlider";
@@ -16,7 +8,6 @@ import { Philosophy } from "./components/Philosophy";
 import Reviews from "./components/Reviews";
 import { Footer } from "./components/Footer";
 import { FloatingActions } from "./components/FloatingActions";
->>>>>>> Stashed changes
 
 export default function Home() {
   return (
@@ -25,9 +16,8 @@ export default function Home() {
       <Hero />
       <TrustTicker />
       
-      {/* Short About Snapshot - Upgraded with highly rounded, premium styling */}
+      {/* Short About Snapshot */}
       <section className="py-24 px-6 relative overflow-hidden">
-         {/* Subtle background decoration */}
          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] pointer-events-none" />
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#F97316]/5 blur-[100px] rounded-full pointer-events-none" />
          
@@ -44,21 +34,6 @@ export default function Home() {
          </div>
       </section>
 
-<<<<<<< Updated upstream
-        {/* 6. Legacy Section */}
-        <Legacy />
-        
-        {/* 7. Initiatives */}
-        <Initiatives />
-        
-        {/* 8. Contact */}
-        <Contact />
-
-        {/* 9. Footer */}
-        <Footer />
-        
-      </div>
-=======
       <ImpactCounters />
       <PillarsOfImpact />
       <PhotoSlider />
@@ -67,7 +42,6 @@ export default function Home() {
       
       <Footer />
       <FloatingActions />
->>>>>>> Stashed changes
     </main>
   );
 }

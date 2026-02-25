@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-<<<<<<< Updated upstream
-  /* config options here */
-=======
   images: {
     // Whitelist our specific image qualities to clear the warning
     qualities: [75, 100],
@@ -13,7 +10,6 @@ const nextConfig = {
       },
     ],
   },
->>>>>>> Stashed changes
 };
 
 export default nextConfig;

@@ -44,7 +44,6 @@ function GetInvolvedContent() {
     if (searchParams?.get("tab")) setActiveTab(searchParams.get("tab") as any);
   }, [searchParams]);
 
-  // FIXED: Dynamic WhatsApp Routing for all 3 forms
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -52,13 +51,13 @@ function GetInvolvedContent() {
     const formData = new FormData(e.currentTarget);
     let message = "";
 
-    // Generate specific message based on active tab
+    // FIXED: Cleaned up corrupted characters in message strings
     if (activeTab === "volunteer") {
-      message = `*New Volunteer Application* 🙋‍♂️\n\n*Name:* ${formData.get("name")}\n*Phone:* ${formData.get("phone")}\n*Email:* ${formData.get("email")}\n*City:* ${formData.get("city")}\n*Area of Interest:* ${formData.get("interest")}`;
+      message = `*New Volunteer Application* 🤝\n\n*Name:* ${formData.get("name")}\n*Phone:* ${formData.get("phone")}\n*Email:* ${formData.get("email")}\n*City:* ${formData.get("city")}\n*Area of Interest:* ${formData.get("interest")}`;
     } else if (activeTab === "invite") {
-      message = `*Program Invitation Request* 🎯\n\n*Organization:* ${formData.get("orgName")}\n*Contact Person:* ${formData.get("contactPerson")}\n*Phone:* ${formData.get("phone")}\n*Email:* ${formData.get("email")}\n*Location:* ${formData.get("location")}\n*Program Required:* ${formData.get("program")}\n*Preferred Date:* ${formData.get("date")}`;
+      message = `*Program Invitation Request* 🎤\n\n*Organization:* ${formData.get("orgName")}\n*Contact Person:* ${formData.get("contactPerson")}\n*Phone:* ${formData.get("phone")}\n*Email:* ${formData.get("email")}\n*Location:* ${formData.get("location")}\n*Program Required:* ${formData.get("program")}\n*Preferred Date:* ${formData.get("date")}`;
     } else if (activeTab === "csr") {
-      message = `*CSR Collaboration Inquiry* 🤝\n\n*Company:* ${formData.get("company")}\n*Corporate Email:* ${formData.get("email")}\n*Details:* ${formData.get("details")}`;
+      message = `*CSR Collaboration Inquiry* 🏢\n\n*Company:* ${formData.get("company")}\n*Corporate Email:* ${formData.get("email")}\n*Details:* ${formData.get("details")}`;
     }
 
     const PHONE_NUMBER = "918888899695";
