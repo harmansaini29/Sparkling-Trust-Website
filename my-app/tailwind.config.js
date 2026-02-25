@@ -21,7 +21,6 @@ export default {
         'bounce-slow': 'bounce-slow 4s infinite',
         'spin-slow': 'spin 8s linear infinite',
         'spin-slow-reverse': 'spin 8s linear infinite reverse',
-        // NEW: Hardware-accelerated infinite scrolling
         'marquee': 'marquee 40s linear infinite',
       },
       keyframes: {

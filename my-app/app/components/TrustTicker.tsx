@@ -12,8 +12,11 @@ const TRUST_METRICS = [
 ];
 
 export function TrustTicker() {
-  // We duplicate the array so the CSS marquee can seamlessly loop without gaps
-  const doubledMetrics = [...TRUST_METRICS, ...TRUST_METRICS, ...TRUST_METRICS];
+  // OPTIMIZATION: Duplicate 4 times. 
+  // The 'marquee' animation translates -50%. 
+  // By having 4 sets, -50% moves exactly past 2 sets.
+  // This leaves 2 sets visible, ensuring a perfect seamless loop even on ultra-wide monitors.
+  const doubledMetrics = [...TRUST_METRICS, ...TRUST_METRICS, ...TRUST_METRICS, ...TRUST_METRICS];
 
   return (
     <div className="bg-[#064E3B] border-y border-white/10 overflow-hidden py-4 md:py-5 relative z-30">

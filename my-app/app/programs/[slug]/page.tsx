@@ -1,10 +1,10 @@
-"use client";
 import React from 'react';
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
 import { ArrowLeft, ArrowRight, Shield, Users, HandHeart, Heart, Leaf, BookOpen, AlertCircle, Target, CheckCircle2 } from 'lucide-react';
-import { useParams, useRouter } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const PROGRAM_DATABASE: Record<string, any> = {
   satark: {
@@ -101,19 +101,29 @@ const PROGRAM_DATABASE: Record<string, any> = {
   }
 };
 
-export default function ProgramDetail() {
-  const params = useParams();
-  const router = useRouter();
-  const slug = params.slug as string;
+export async function generateStaticParams() {
+  return Object.keys(PROGRAM_DATABASE).map((slug) => ({
+    slug: slug,
+  }));
+}
+// Keep your PROGRAM_DATABASE and generateStaticParams code at the top as it is.
+
+// 1. Make the function async
+// 2. Type params as a Promise
+export default async function ProgramDetail({ params }: { params: Promise<{ slug: string }> }) {
+  // 3. Await the params before using them!
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   const program = PROGRAM_DATABASE[slug];
 
-  if (!program) return null;
+  // Properly return the Next.js 404 component if not found
+  if (!program) return notFound();
 
   return (
     <div className="min-h-screen bg-[#FDFCF9] font-sans">
       <Navbar />
       
-      {/* 1. HERO BANNER */}
+      {/* HERO BANNER */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0">
           <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom right, ${program.color}ee, #050505fa)` }} />
@@ -121,19 +131,18 @@ export default function ProgramDetail() {
         </div>
 
         <div className="relative z-20 max-w-6xl mx-auto px-6 text-center text-white pt-20">
-          <button onClick={() => router.push('/programs')} className="mb-8 inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full text-white font-semibold hover:bg-white/20 transition-all border border-white/20">
+          <Link href="/programs" className="mb-8 inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full text-white font-semibold hover:bg-white/20 transition-all border border-white/20">
             <ArrowLeft className="w-4 h-4" /> Back to Initiatives
-          </button>
+          </Link>
           <h1 className="text-6xl md:text-8xl font-serif font-bold mb-4">{program.title}</h1>
           <p className="text-2xl md:text-3xl text-[#F97316] italic mb-8 font-serif">{program.subtitle}</p>
           <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">{program.desc}</p>
         </div>
       </section>
 
-      {/* 2 & 3. PROBLEM & APPROACH (USING EXACT DOCX BULLET POINTS) */}
+      {/* PROBLEM & APPROACH */}
       <section className="py-32 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-12 gap-12">
-          
           <div className="md:col-span-5 bg-white p-10 rounded-[3rem] shadow-xl border border-black/5 flex flex-col justify-center">
             <AlertCircle className="w-12 h-12 text-red-500 mb-6" />
             <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#064E3B]/50 mb-2">The Challenge</h3>
@@ -154,11 +163,10 @@ export default function ProgramDetail() {
               ))}
             </ul>
           </div>
-
         </div>
       </section>
 
-      {/* 4. TARGET */}
+      {/* TARGET */}
       <section className="py-20 bg-white border-y border-black/5">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-serif text-[#064E3B] mb-12">Measurable Target</h2>
@@ -173,14 +181,14 @@ export default function ProgramDetail() {
         </div>
       </section>
 
-      {/* 5. INVITE SECTION */}
+      {/* INVITE SECTION */}
       <section className="py-24 bg-[#064E3B] text-center text-white relative overflow-hidden">
         <div className="max-w-3xl mx-auto px-6 relative z-10">
             <h2 className="text-4xl md:text-5xl font-serif mb-6">Drive the Change</h2>
             <p className="text-white/60 mb-10 text-lg">Want to implement this program in your community or institution? Partner with us to make it happen.</p>
-            <button onClick={() => router.push(`/get-involved?tab=invite`)} className="bg-[#F97316] text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-[#064E3B] transition-colors flex items-center gap-3 mx-auto">
+            <Link href="/get-involved?tab=invite" className="inline-flex bg-[#F97316] text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-[#064E3B] transition-colors items-center gap-3 mx-auto">
                 Request a Program <ArrowRight size={18} />
-            </button>
+            </Link>
         </div>
       </section>
 

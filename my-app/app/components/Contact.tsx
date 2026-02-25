@@ -14,10 +14,8 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // FIXED: Official Foundation Number with Country Code
     const PHONE_NUMBER = "918888899695"; 
     
-    // FIXED: Professional URL Encoding for WhatsApp
     const rawMessage = `*Website Inquiry* 🌟\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email}\n*Subject:* ${formData.subject}\n*Message:* ${formData.message}`;
     
     window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(rawMessage)}`, '_blank');
@@ -55,16 +53,15 @@ export function Contact() {
                   <div className="w-14 h-14 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-[#F97316] shadow-sm group-hover:bg-[#F97316] group-hover:text-white transition-colors"><Mail size={24} /></div>
                   <div className="pt-1">
                     <h4 className="font-bold text-[#064E3B] text-xs uppercase tracking-widest mb-2 opacity-50">Email</h4>
-                    {/* FIXED: Matched exact email from official doc */}
                     <p className="text-[#064E3B] font-serif text-lg break-all">sparkleglobalfoundation@gmail.com</p>
                   </div>
               </div>
             </div>
 
-            {/* FIXED: REAL MAP EMBED FOR BANER, PUNE */}
+            {/* REAL MAP EMBED FOR BANER, PUNE */}
             <div className="w-full h-72 rounded-[2rem] overflow-hidden shadow-xl border border-black/5">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.1646736480575!2d73.76635587519283!3d18.56658998253606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b918f6027a01%3A0x6b801552a4220b3!2sPyramid%20Axis!5e0!3m2!1sen!2sin!4v1708500000000!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.35515053738!2d73.78201777598817!3d18.558066668028713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bec70b61514d%3A0xc07ce9b1ecae1dd7!2sBaner%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1714561023000!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 

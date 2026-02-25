@@ -26,21 +26,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sparkle Era Global Foundation",
     description: "Building a financially aware and socially empowered India.",
-    images: ['/india-pattern.png'],
+    images: ['/hero-bg.png'],
     type: "website",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // suppressHydrationWarning here prevents any generic root-level extension injections
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className={`${inter.variable} ${cormorant.variable} antialiased font-sans bg-[#FDFCF9] text-[#064E3B] w-full relative overflow-x-hidden`}>
-        <Preloader />
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${cormorant.variable} scroll-smooth`}>
+      <body className="bg-[#FDFCF9] text-[#064E3B] font-sans antialiased selection:bg-[#F97316]/30">
+        <Preloader /> 
         {children}
         <FloatingActions />
       </body>
