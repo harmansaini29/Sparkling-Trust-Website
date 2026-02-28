@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Preloader } from "./components/ui/Preloader";
+import { FloatingActions } from "./components/FloatingActions";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,26 +18,26 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sparklingera.org'), 
   title: {
-    default: "Sparkling Era Global Foundation",
-    template: "%s | Sparkling Era"
+    default: "Sparkle Era Global Foundation",
+    template: "%s | Sparkle Era"
   },
-  description: "Restoring the economic dignity of Bharat by merging the precision of modern finance with the timeless ethics of Dharma.",
+  description: "Building a financially aware and socially empowered India through financial literacy, women empowerment, cultural awareness, and environmental sustainability.",
+  keywords: ["NGO", "India", "Financial Literacy", "Women Empowerment", "Pune NGO", "Sparkle Era", "Rahul Mane"],
   openGraph: {
-    images: ['/india-pattern.png'],
+    title: "Sparkle Era Global Foundation",
+    description: "Building a financially aware and socially empowered India.",
+    images: ['/hero-bg-clean.jpg'],
+    type: "website",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // Replaced overflow-x-hidden with overflow-x-clip logic from globals.css
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className={`${inter.variable} ${cormorant.variable} antialiased font-sans bg-[#FDFCF9] text-earth w-full relative`}>
-        <Preloader />
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${cormorant.variable} scroll-smooth`}>
+      <body className="bg-[#FDFCF9] text-[#064E3B] font-sans antialiased selection:bg-[#F97316]/30">
+        <Preloader /> 
         {children}
+        <FloatingActions />
       </body>
     </html>
   );

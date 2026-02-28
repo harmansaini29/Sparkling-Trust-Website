@@ -1,126 +1,130 @@
 "use client";
 import Image from "next/image"; 
-import { Play, Globe, Trophy } from "lucide-react";
-import { GlassCard } from "./ui/GlassCard";
-import { motion } from "framer-motion";
+import Link from "next/link"; 
+import { Globe, Trophy, ArrowUpRight, Play } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export function Hero() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const scaleBg = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
-    <header className="relative w-full min-h-[95vh] flex items-center pt-32 pb-20 overflow-hidden bg-[#FDFCF9]">
+    <header ref={containerRef} className="relative w-full h-screen min-h-[850px] flex items-center justify-start overflow-hidden bg-[#1e48885b]">
       
-      {/* BACKGROUND */}
-      <div className="absolute inset-0 z-0">
-         <motion.div 
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            // Smoother easing curve
-            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-0 right-0 w-full lg:w-[75%] h-full"
-         >
-            <div className="relative w-full h-full">
-                <Image 
-                  src="/india-pattern.png" 
-                  alt="Bharat Heritage Pattern"
-                  fill
-                  className="object-contain object-right-top opacity-90 select-none"
-                  priority
-                  sizes="(max-width: 768px) 100vw, 75vw"
-                />
-            </div>
-            {/* Ambient Float */}
-            <motion.div 
-              className="absolute inset-0 pointer-events-none"
-              animate={{ y: [0, -20, 0], scale: [1, 1.02, 1] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            />
-         </motion.div>
-         
-         <div className="absolute inset-0 bg-gradient-to-r from-[#FDFCF9] via-[#FDFCF9]/95 via-40% to-transparent z-10" />
-         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FDFCF9] to-transparent z-10" />
-      </div>
+      <motion.div 
+        style={{ y: yBg, scale: scaleBg }}
+        className="absolute inset-0 w-full h-full z-0 origin-center will-change-transform"
+      >
+         {/* CHANGED SRC and OBJECT POSITIONING FOR RESPONSIVENESS */}
+         <Image 
+           src="/hero-bg-clean.jpg" 
+           alt="Bharat Mata" 
+           fill 
+           sizes="100vw"
+           className="object-cover object-center md:object-[75%_center] lg:object-right opacity-100 brightness-110 contrast-125 saturate-110" 
+           priority 
+           quality={100}
+         />
+      </motion.div>
 
-      {/* GLOW */}
-      <div className="absolute top-1/4 right-0 w-[800px] h-[800px] bg-gold/5 blur-[150px] rounded-full z-0 pointer-events-none" />
+      <div className="absolute inset-y-0 left-0 w-full lg:w-[60%] bg-gradient-to-r from-[#0c401e] via-[#0A192F]/90 to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.12)_0%,transparent_60%)] z-10 pointer-events-none blur-3xl mix-blend-screen" />
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#FDFCF9] to-transparent z-10 pointer-events-none" />
 
-      {/* CONTENT */}
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center relative z-20">
-        
-        {/* Left: Typography */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          // Custom "Luxurious" Easing
-          transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-7 space-y-8"
-        >
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/90 border border-gold/30 shadow-sm backdrop-blur-md">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+      <motion.div 
+        style={{ opacity: opacityText }}
+        className="relative z-20 w-full max-w-7xl mx-auto px-6 flex flex-col items-start text-left mt-[-5%]"
+      >
+        <div className="max-w-2xl">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }} 
+            animate={{ opacity: 1, x: 0 }} 
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center gap-4 mb-6"
+          >
+            <div className="h-[2px] w-12 bg-[#D4AF37]" />
+            <span className="text-[10px] md:text-xs font-bold tracking-[0.4em] text-[#D4AF37] uppercase drop-shadow-md">
+              Govt. Recognized NGO
             </span>
-            <span className="text-[10px] uppercase tracking-[0.3em] font-black text-gold">Heritage Meets Finance</span>
-          </div>
+          </motion.div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-[7.5rem] font-serif leading-[1.1] lg:leading-[0.9] text-earth tracking-tight">
-            Empowering <br />
-            <span className="text-gold italic relative inline-block">
-              Bharat
-              <svg className="absolute -bottom-2 left-0 w-full h-3 text-gold/20" viewBox="0 0 100 10" preserveAspectRatio="none">
-                 <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
-              </svg>
-            </span> <br />
-            <span className="font-light text-earth/80">Reclaiming Roots</span>
-          </h1>
+          <motion.h1 
+            className="font-serif font-bold drop-shadow-[0_10px_30px_rgba(0,0,0,0.6)]"
+            initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
+            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+            transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
+          >
+            <span className="block italic font-light text-white/90 text-3xl md:text-4xl lg:text-5xl mb-4 drop-shadow-lg">
+              Empowering the roots of
+            </span>
+            <span className="block text-5xl md:text-7xl lg:text-[6.5rem] leading-[1.1] bg-clip-text text-transparent bg-gradient-to-b from-[#FFF9E6] via-[#D4AF37] to-[#A6831C] tracking-tight pb-2">
+              अर्थ साक्षर <br /> भारत अभियान
+            </span>
+          </motion.h1>
 
-          <p className="text-lg lg:text-xl text-earth/70 font-serif italic max-w-lg leading-relaxed border-l-4 border-gold/40 pl-6">
-            "Restoring the historical economic sovereignty of the Indian spirit through Dharmic principles."
-          </p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-lg md:text-xl text-white/75 font-serif italic mt-8 max-w-xl leading-relaxed drop-shadow-md"
+          >
+            A unified movement to decouple wealth from greed. We are building a financially sovereign and socially compassionate India.
+          </motion.p>
 
-          <div className="flex flex-wrap gap-5 pt-6">
-            <button suppressHydrationWarning className="bg-earth text-white px-10 py-5 rounded-2xl font-bold text-xs tracking-[0.2em] uppercase shadow-xl shadow-earth/10 hover:-translate-y-1 hover:shadow-2xl hover:bg-gold hover:text-earth transition-all duration-300">
-              Explore Mission
-            </button>
-            <button suppressHydrationWarning className="flex items-center gap-4 px-6 py-5 rounded-2xl border border-earth/10 bg-white/50 backdrop-blur-md hover:bg-white transition-all group">
-              <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
-                <Play size={18} fill="currentColor" />
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 1.2, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row gap-6 mt-12"
+          >
+            <Link href="/programs" className="group relative px-8 py-4.5 bg-gradient-to-r from-[#D4AF37] to-[#B8942E] text-[#0A192F] rounded-lg font-sans text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_10px_30px_rgba(212,175,55,0.3)] hover:shadow-[0_15px_40px_rgba(212,175,55,0.5)] hover:-translate-y-1 flex items-center justify-center gap-3">
+              Explore Initiatives <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </Link>
+            
+            <Link href="/impact" className="group px-8 py-4 border border-white/20 bg-white/5 backdrop-blur-md text-white rounded-lg font-sans text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:bg-white/10 hover:border-[#D4AF37]/50 hover:-translate-y-1 flex items-center justify-center gap-3">
+              <span className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-[#D4AF37] transition-colors bg-white/10">
+                <Play className="w-3 h-3 fill-current ml-0.5 text-[#D4AF37]" />
+              </span>
+              Watch Impact
+            </Link>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 1.5, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute bottom-12 left-0 w-full z-30 pointer-events-none"
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="inline-flex flex-col sm:flex-row items-start sm:items-center gap-8 px-10 py-5 bg-[#0A192F]/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] pointer-events-auto">
+            <div className="flex items-center gap-4">
+              <Globe className="w-8 h-8 text-[#D4AF37]" />
+              <div className="text-left">
+                <h4 className="text-2xl font-serif font-bold text-white leading-none tracking-wide">56,411+</h4>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#D4AF37] mt-1.5 opacity-90">Lives Empowered</p>
               </div>
-              <span className="font-bold text-[11px] tracking-[0.2em] uppercase text-earth">Watch Vision</span>
-            </button>
+            </div>
+            <div className="hidden sm:block w-[1px] h-12 bg-white/20" />
+            <div className="flex items-center gap-4">
+              <Trophy className="w-8 h-8 text-[#D4AF37]" />
+              <div className="text-left">
+                <h4 className="text-2xl font-serif font-bold text-white leading-none tracking-wide">262+</h4>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#D4AF37] mt-1.5 opacity-90">Grassroots Events</p>
+              </div>
+            </div>
           </div>
-        </motion.div>
-
-        {/* Right: Floating Glass Cards */}
-        <motion.div 
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-5 space-y-6 lg:pl-8 lg:translate-y-8 hidden md:block"
-        >
-           <GlassCard hoverEffect={true} className="p-8 bg-white/70 border-white/50 shadow-lg backdrop-blur-xl">
-             <div className="flex items-start gap-5">
-               <div className="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center text-gold shrink-0">
-                 <Globe size={28} strokeWidth={1.5} />
-               </div>
-               <div>
-                 <h3 className="font-serif font-bold text-xl text-earth mb-1">Economic Swaraj</h3>
-                 <p className="text-xs text-earth/60 leading-relaxed font-medium">Rebuilding self-reliance through decentralized financial wisdom.</p>
-               </div>
-             </div>
-           </GlassCard>
-
-           <GlassCard hoverEffect={true} className="p-8 lg:translate-x-12 bg-white/70 border-white/50 shadow-lg backdrop-blur-xl">
-             <div className="flex items-start gap-5">
-               <div className="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center text-gold shrink-0">
-                 <Trophy size={28} strokeWidth={1.5} />
-               </div>
-               <div>
-                 <h3 className="font-serif font-bold text-xl text-earth mb-1">Spiritual Heritage</h3>
-                 <p className="text-xs text-earth/60 leading-relaxed font-medium">Grounding modern wealth creation in 5,000 years of Dharmic civilization.</p>
-               </div>
-             </div>
-           </GlassCard>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </header>
   );
 }
