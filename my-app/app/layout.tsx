@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sparkle Era Global Foundation",
     description: "Building a financially aware and socially empowered India.",
-    images: ['/hero-bg.png'],
+    images: ['/hero-bg-clean.jpg'],
     type: "website",
   },
 };
