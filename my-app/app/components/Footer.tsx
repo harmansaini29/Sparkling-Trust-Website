@@ -103,7 +103,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-bold">
-            <p>© {new Date().getFullYear()} Sparkle Era Global Foundation. All Rights Reserved.</p>
+            <p>© 2021 Sparkle Era Global Foundation. All Rights Reserved.</p>
             <div className="flex items-center gap-6">
                 <Link href="/compliance" className="hover:text-[#F97316] transition-colors">Compliance & Legal</Link>
                 <div className="flex items-center gap-2">

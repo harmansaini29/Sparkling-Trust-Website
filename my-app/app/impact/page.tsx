@@ -23,7 +23,7 @@ const TIMELINE = [
     desc: "Scaled our flagship programs, Satark and Saksham, across multiple districts. Delivered financial awareness directly to farmers, women, and rural youth.",
     icon: <Scale className="w-6 h-6 md:w-8 md:h-8 text-white" />,
     stats: { lives: "10,000+", workshops: 85, locations: 5 },
-    color: "#064E3B",
+    color: "#F97316",
     achievements: ["Crossed 10,000 lives impacted milestone", "Launch of 'Paisa ki Pathshala'", "Partnership with 15+ rural schools"]
   },
   {
@@ -39,7 +39,7 @@ const TIMELINE = [
     desc: "Expanding beyond state borders. Re-establishing the Indian ethos of self-reliance and financial wisdom across thousands of villages.",
     icon: <Globe className="w-6 h-6 md:w-8 md:h-8 text-white" />,
     stats: { target: "1 Million+", branches: 50, impact: "Pan-India" },
-    color: "#064E3B",
+    color: "#F97316",
     achievements: ["Targeting 10 Lakh individuals for Satark", "National school curriculum integration", "1,00,000 trees for Shrushti Savardhan"]
   },
 ];

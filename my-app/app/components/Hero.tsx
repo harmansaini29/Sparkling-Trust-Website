@@ -23,7 +23,6 @@ export function Hero() {
         style={{ y: yBg, scale: scaleBg }}
         className="absolute inset-0 w-full h-full z-0 origin-center will-change-transform"
       >
-         {/* CHANGED SRC and OBJECT POSITIONING FOR RESPONSIVENESS */}
          <Image 
            src="/hero-bg-clean.jpg" 
            alt="Bharat Mata" 
@@ -51,7 +50,7 @@ export function Hero() {
             className="flex items-center gap-4 mb-6"
           >
             <div className="h-[2px] w-12 bg-[#D4AF37]" />
-            <span className="text-[10px] md:text-xs font-bold tracking-[0.4em] text-[#D4AF37] uppercase drop-shadow-md">
+            <span className="text-[10px] md:text-sm font-bold tracking-[0.4em] text-[#D4AF37] uppercase drop-shadow-md">
               Govt. Recognized NGO
             </span>
           </motion.div>
@@ -65,8 +64,44 @@ export function Hero() {
             <span className="block italic font-light text-white/90 text-3xl md:text-4xl lg:text-5xl mb-4 drop-shadow-lg">
               Empowering the roots of
             </span>
-            <span className="block text-5xl md:text-7xl lg:text-[6.5rem] leading-[1.1] bg-clip-text text-transparent bg-gradient-to-b from-[#FFF9E6] via-[#D4AF37] to-[#A6831C] tracking-tight pb-2">
-              अर्थ साक्षर <br /> भारत अभियान
+            
+            {/* SPACING FIX: Set leading-[1.1] to tighten the lines, stacked as block elements, and removed inner padding. */}
+            <span className="block text-5xl md:text-7xl lg:text-[6.5rem] font-sans font-extrabold whitespace-nowrap leading-[1.1]">
+              
+              <span className="block pt-3 pb-0 bg-clip-text text-transparent bg-gradient-to-b from-[#FFF9E6] via-[#D4AF37] to-[#A6831C]">
+                अर्थ साक्ष<motion.span 
+                  className="inline-block relative font-normal align-baseline -translate-y-[6%] mx-1.5"
+                  style={{
+                    fontSize: '1.10em',
+                    backgroundImage: 'linear-gradient(90deg, #D4AF37 0%, #FFF9E6 20%, #F97316 50%, #FFF9E6 80%, #D4AF37 100%)',
+                    backgroundSize: '200% auto',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                  }}
+                  animate={{ 
+                    backgroundPosition: ['200% center', '-200% center'],
+                    filter: [
+                      'drop-shadow(0 0 10px rgba(212,175,55,0.4))',
+                      'drop-shadow(0 0 20px rgba(249,115,22,0.8))',
+                      'drop-shadow(0 0 10px rgba(212,175,55,0.4))'
+                    ]
+                  }}
+                  transition={{ 
+                    backgroundPosition: { duration: 3, repeat: Infinity, ease: "linear" },
+                    filter: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                >
+                  ₹
+                </motion.span>
+              </span>
+              
+              {/* Negative margin (-mt-2 lg:-mt-4) pulls this line up to eliminate any remaining gap */}
+              <span className="block pt-4 pb-6 -mt-2 lg:-mt-1 bg-clip-text text-transparent bg-gradient-to-b from-[#D4AF37] to-[#A6831C]">
+              भारत अभियान
+              </span>
+
             </span>
           </motion.h1>
 
