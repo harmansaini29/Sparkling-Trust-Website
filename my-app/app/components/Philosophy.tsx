@@ -77,7 +77,10 @@ const PhilosophyCard = ({ item, index, progress, total }: CardProps) => {
             </div>
             <span className="text-xs md:text-sm font-bold uppercase tracking-[0.2em]">Core Principle</span>
           </div>
-          <span className="font-serif text-2xl md:text-3xl italic opacity-40 font-black">0{item.id}</span>
+          {/* REMOVED font-serif and italic, ADDED font-sans font-black tracking-tighter */}
+          <span className="font-sans text-3xl md:text-4xl font-black tracking-tighter opacity-20">
+            0{item.id}
+          </span>
         </div>
 
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start md:items-center w-full relative z-10 pt-4">

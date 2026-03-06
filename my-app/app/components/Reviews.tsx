@@ -1,6 +1,6 @@
 "use client";
+
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Quote, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
@@ -27,52 +27,81 @@ const testimonials = [
   }
 ];
 
-// MUST be default export to match your page.tsx import
 export default function Reviews() {
   return (
     <section className="py-32 bg-[#064E3B] relative overflow-hidden">
+      {/* We use standard CSS for the marquee to natively support 'pause on hover'.
+        This guarantees perfect performance without React re-renders.
+      */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes scroll-x {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-scroll-x {
+          animation: scroll-x 40s linear infinite;
+        }
+        /* Pauses the entire animation track when ANY part of the container is hovered */
+        .scroll-track:hover .animate-scroll-x,
+        .scroll-track:active .animate-scroll-x {
+          animation-play-state: paused;
+        }
+      `}} />
+
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#F97316]/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#D4AF37]/5 rounded-full blur-[100px]" />
       </div>
 
       <div className="max-w-[1600px] mx-auto px-6 relative z-10 mb-20">
         <div className="flex flex-col md:flex-row justify-between items-end gap-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 shadow-xl">
               <Sparkles size={14} className="text-[#F97316]" />
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white">Impact Stories</span>
             </div>
-            <h2 className="text-5xl md:text-7xl font-serif text-white leading-tight">
+            <h2 className="text-5xl md:text-7xl font-serif text-white leading-tight drop-shadow-lg">
               Voices of <span className="italic text-[#F97316]">Empowerment</span>
             </h2>
           </div>
         </div>
       </div>
 
-      <div className="relative flex w-full overflow-hidden pb-12">
-        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#064E3B] to-transparent z-20 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-[#064E3B] to-transparent z-20 pointer-events-none" />
+      {/* The 'scroll-track' wrapper listens for hovers/clicks to pause the children */}
+      <div className="relative flex w-full overflow-hidden pb-16 pt-8 scroll-track cursor-grab active:cursor-grabbing">
+        
+        {/* Gradients to fade out edges smoothly */}
+        <div className="absolute inset-y-0 left-0 w-24 md:w-64 bg-gradient-to-r from-[#064E3B] to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-24 md:w-64 bg-gradient-to-l from-[#064E3B] to-transparent z-20 pointer-events-none" />
 
-        <motion.div 
-          className="flex w-max"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, duration: 45, ease: "linear" }}
-        >
+        <div className="flex w-max animate-scroll-x">
+          {/* We duplicate the array exactly once. Because the CSS translates by exactly -50%, 
+              it snaps seamlessly back to the start without visual jumping. */}
           {[...testimonials, ...testimonials].map((item, index) => (
-            <div key={index} className="pr-6 md:pr-8">
-              <div className="w-[85vw] md:w-[500px] lg:w-[600px] bg-[#FDFCF9] rounded-[2.5rem] p-8 md:p-12 flex flex-col justify-between relative overflow-hidden group shadow-[0_20px_40px_rgba(0,0,0,0.2)] shrink-0 transition-transform duration-500 hover:-translate-y-2 border border-black/5">
-                <Quote className="absolute -top-10 -right-10 w-48 h-48 text-[#064E3B]/5 rotate-12 group-hover:rotate-0 transition-transform duration-700" />
+            <div key={index} className="pr-6 md:pr-10">
+              
+              {/* THE CARD: Enriched hover states for translation, border, and deep shadows */}
+              <div className="w-[85vw] md:w-[500px] lg:w-[600px] h-full bg-[#FDFCF9] rounded-[2.5rem] p-8 md:p-12 flex flex-col justify-between relative overflow-hidden group shadow-[0_10px_30px_rgba(0,0,0,0.15)] shrink-0 transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(249,115,22,0.15)] border border-transparent hover:border-[#F97316]/30">
+                
+                {/* Decorative background quote that subtly rotates and scales */}
+                <Quote className="absolute -top-8 -right-8 w-48 h-48 text-[#064E3B]/[0.03] rotate-12 group-hover:rotate-0 group-hover:scale-110 group-hover:text-[#064E3B]/[0.05] transition-all duration-700" />
                 
                 <div className="relative z-10">
-                  <Quote className="w-10 h-10 text-[#F97316] mb-8" />
-                  <p className="text-2xl md:text-3xl font-serif text-[#064E3B] leading-snug mb-10">
+                  <Quote className="w-10 h-10 text-[#F97316] mb-8 group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500" />
+                  <p className="text-2xl md:text-3xl font-serif text-[#064E3B] leading-snug mb-10 group-hover:text-[#0a2e24] transition-colors duration-300">
                     "{item.quote}"
                   </p>
                 </div>
 
-                <div className="relative z-10 flex items-center gap-6 pt-6 border-t border-black/10">
-                  <div className="w-16 h-16 rounded-full overflow-hidden relative shadow-lg">
-                    <Image src={item.image} alt={item.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                <div className="relative z-10 flex items-center gap-6 pt-6 border-t border-black/10 group-hover:border-[#F97316]/20 transition-colors duration-300">
+                  <div className="w-16 h-16 rounded-full overflow-hidden relative shadow-md ring-2 ring-transparent group-hover:ring-[#F97316]/50 transition-all duration-500">
+                    <Image 
+                      src={item.image} 
+                      alt={item.name} 
+                      fill 
+                      sizes="64px"
+                      className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" 
+                    />
                   </div>
                   <div>
                     <h4 className="text-xl font-bold font-serif text-[#064E3B] mb-1">{item.name}</h4>
@@ -82,7 +111,7 @@ export default function Reviews() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

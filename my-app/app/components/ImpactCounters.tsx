@@ -10,8 +10,8 @@ function CountUp({ to, suffix }: { to: number; suffix: string }) {
   useEffect(() => {
     if (inView && nodeRef.current) {
       const controls = animate(0, to, {
-        duration: 3, // Slower, smoother count
-        ease: [0.22, 1, 0.36, 1], // Custom bezier for premium feel
+        duration: 3, 
+        ease: [0.22, 1, 0.36, 1], 
         onUpdate: (val) => {
           if (nodeRef.current) {
             nodeRef.current.textContent = Math.floor(val).toLocaleString();
@@ -23,18 +23,12 @@ function CountUp({ to, suffix }: { to: number; suffix: string }) {
   }, [inView, to]);
 
   return (
-    <span className="flex items-center justify-center tabular-nums tracking-tight">
+    <span className="flex items-center justify-center tabular-nums">
       <span ref={nodeRef}>0</span>
       <span>{suffix}</span>
     </span>
   );
 }
-
-// DATA SOURCE: "Sparkle foundation socail Event List (1).xlsx - Sheet1.csv"
-// Lives Impacted: 56,411 (Sum of all program headers)
-// Events: 262 (Calculated from detailed row counts + aggregate notes like "79 programs")
-// Cities: 14 (Unique locations extracted from location column)
-// Volunteers: 21 (From official documentation)
 
 const stats = [
   { 
@@ -89,7 +83,8 @@ export function ImpactCounters() {
                 {stat.icon}
               </div>
               <div>
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-2 drop-shadow-lg">
+                {/* REMOVED font-serif, ADDED font-sans font-black tracking-tighter for a modern look */}
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-sans font-black tracking-tighter text-white mb-2 drop-shadow-lg">
                   <CountUp to={stat.value} suffix={stat.suffix} />
                 </h3>
                 <p className="text-[#F97316] text-[10px] md:text-xs font-bold uppercase tracking-[0.25em] opacity-90 group-hover:opacity-100 transition-opacity">

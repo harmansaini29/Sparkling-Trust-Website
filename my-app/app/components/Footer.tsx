@@ -55,6 +55,8 @@ export function Footer() {
                         <li><Link href="/about" className="hover:text-white hover:translate-x-1 inline-block transition-transform">About Us</Link></li>
                         <li><Link href="/impact" className="hover:text-white hover:translate-x-1 inline-block transition-transform">Our Impact</Link></li>
                         <li><Link href="/gallery" className="hover:text-white hover:translate-x-1 inline-block transition-transform">Media Gallery</Link></li>
+                        {/* New Link Added */}
+                        <li><Link href="/contribute" className="hover:text-white hover:translate-x-1 inline-block transition-transform text-[#F97316]">Strategic Philanthropy</Link></li>
                         <li><Link href="/contact" className="hover:text-white hover:translate-x-1 inline-block transition-transform">Contact Us</Link></li>
                     </ul>
                 </div>

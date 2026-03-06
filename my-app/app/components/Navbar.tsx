@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image"; 
-import { Menu, X, ZoomIn, ChevronDown, PhoneCall, ShieldCheck } from "lucide-react";
+import { Menu, X, ZoomIn, ChevronDown, PhoneCall, ShieldCheck, Landmark } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Navbar() {
@@ -86,9 +86,13 @@ export function Navbar() {
             </div>
           </div>
 
+          {/* Action Buttons (Desktop) */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link href="/contact" className="group flex items-center gap-2 border border-[#064E3B]/20 bg-[#064E3B]/5 text-[#064E3B] px-5 py-2.5 rounded-xl text-[10px] uppercase tracking-widest font-bold hover:bg-[#F97316] hover:border-[#F97316] hover:text-white transition-all shadow-sm">
-              <PhoneCall size={14} className="group-hover:animate-bounce" /> Contact Us
+            <Link href="/contact" className="group flex items-center gap-2 border border-[#064E3B]/20 bg-white text-[#064E3B] px-5 py-2.5 rounded-xl text-[10px] uppercase tracking-widest font-bold hover:bg-[#064E3B]/5 transition-all shadow-sm">
+              <PhoneCall size={14} className="group-hover:scale-110 transition-transform" /> Contact
+            </Link>
+            <Link href="/contribute" className="group flex items-center gap-2 bg-[#F97316] text-white px-5 py-2.5 rounded-xl text-[10px] uppercase tracking-widest font-bold hover:bg-[#064E3B] hover:text-white transition-all shadow-md">
+              <Landmark size={14} className="group-hover:scale-110 transition-transform" /> Contribute
             </Link>
           </div>
 
@@ -142,7 +146,12 @@ export function Navbar() {
                 </AnimatePresence>
               </div>
 
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-serif text-[#064E3B] pb-4 hover:text-[#F97316] transition-colors">Contact Us</Link>
+              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-serif text-[#064E3B] border-b border-[#064E3B]/10 pb-4 hover:text-[#F97316] transition-colors">Contact Us</Link>
+              
+              {/* Added to Mobile Menu */}
+              <Link href="/contribute" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-3 text-3xl font-serif text-[#F97316] pb-4 pt-2">
+                Contribute <Landmark size={24} />
+              </Link>
             </div>
           </motion.div>
         )}

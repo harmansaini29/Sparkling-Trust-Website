@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-// The 6 Key Initiatives
 const PROGRAMS = [
   { 
     id: "satark", category: "Awareness", title: "Satark", tagline: "Financial Awareness & Vigilance",
@@ -19,7 +18,6 @@ const PROGRAMS = [
   },
   { 
     id: "sanskar", category: "Education", title: "Sanskar", tagline: "Values & Heritage",
-    // FIXED 404 IMAGE HERE
     image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1200", metrics: { impact: "5,000+", events: "80+" }
   },
   { 
@@ -115,8 +113,16 @@ export default function ProgramsPage() {
                 <p className="text-earth/60 italic text-sm mb-6">{program.tagline}</p>
                 
                 <div className="grid grid-cols-3 gap-2 py-6 border-t border-black/5">
-                   <div><div className="font-bold text-gold">{program.metrics.impact}</div><div className="text-[10px] uppercase text-earth/40">Impact</div></div>
-                   <div><div className="font-bold text-gold">{program.metrics.events}</div><div className="text-[10px] uppercase text-earth/40">Events</div></div>
+                   <div>
+                     {/* UPDATED TO SANS BOLD METRIC FONT */}
+                     <div className="font-sans font-black tracking-tighter text-2xl text-gold">{program.metrics.impact}</div>
+                     <div className="text-[10px] uppercase text-earth/40">Impact</div>
+                   </div>
+                   <div>
+                     {/* UPDATED TO SANS BOLD METRIC FONT */}
+                     <div className="font-sans font-black tracking-tighter text-2xl text-gold">{program.metrics.events}</div>
+                     <div className="text-[10px] uppercase text-earth/40">Events</div>
+                   </div>
                    
                    <Link href={`/programs/${program.id}`} className="flex justify-end items-center group/btn">
                       <div className="flex items-center gap-1 text-[10px] font-bold uppercase text-gold">View <ArrowUpRight size={16} className="group-hover/btn:translate-x-1 transition-transform" /></div>
