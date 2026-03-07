@@ -68,29 +68,30 @@ export function Hero() {
             {/* SPACING FIX: Set leading-[1.1] to tighten the lines, stacked as block elements, and removed inner padding. */}
             <span className="block text-5xl md:text-7xl lg:text-[6.5rem] font-sans font-extrabold whitespace-nowrap leading-[1.1]">
               
-              <span className="block pt-3 pb-0 bg-clip-text text-transparent bg-gradient-to-b from-[#FFF9E6] via-[#D4AF37] to-[#A6831C]">
+              <span className="block pt-5 pb-0 bg-clip-text text-transparent bg-gradient-to-b from-[#FFF9E6] via-[#D4AF37] to-[#A6831C]">
                 अर्थ साक्ष<motion.span 
                   className="inline-block relative font-normal align-baseline -translate-y-[6%] mx-1.5"
                   style={{
-                    fontSize: '1.10em',
-                    backgroundImage: 'linear-gradient(90deg, #D4AF37 0%, #FFF9E6 20%, #F97316 50%, #FFF9E6 80%, #D4AF37 100%)',
-                    backgroundSize: '200% auto',
+                    fontSize: '0.93em',
+                    /* Tiranga (Indian Tricolor) Gradient */
+                    backgroundImage: 'linear-gradient(180deg, #FF671F 20%, #FFFFFF 50%, #046A38 80%)',
+                    backgroundSize: '100% auto',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
                     color: 'transparent',
                   }}
                   animate={{ 
-                    backgroundPosition: ['200% center', '-200% center'],
+                    /* Cycles the glow through Saffron, White, and Green */
                     filter: [
-                      'drop-shadow(0 0 10px rgba(212,175,55,0.4))',
-                      'drop-shadow(0 0 20px rgba(249,115,22,0.8))',
-                      'drop-shadow(0 0 10px rgba(212,175,55,0.4))'
+                      'drop-shadow(0 0 12px rgba(255,103,31,0.6))',
+                      'drop-shadow(0 0 15px rgba(255,255,255,0.8))',
+                      'drop-shadow(0 0 12px rgba(4,106,56,0.6))',
+                      'drop-shadow(0 0 12px rgba(255,103,31,0.6))'
                     ]
                   }}
                   transition={{ 
-                    backgroundPosition: { duration: 3, repeat: Infinity, ease: "linear" },
-                    filter: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                    filter: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                   }}
                 >
                   ₹

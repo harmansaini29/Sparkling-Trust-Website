@@ -17,62 +17,72 @@ export default function Home() {
       <Hero />
       <TrustTicker />
       
-      <section className="py-24 lg:py-32 px-6 relative overflow-hidden flex items-center justify-center min-h-[550px]">
-         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] pointer-events-none" />
+      {/* OUR MISSION SECTION - Upgraded 10/10 Professional Design */}
+      <section className="py-32 lg:py-48 px-6 relative overflow-hidden flex items-center justify-center min-h-[700px]">
+         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.04] pointer-events-none" />
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#D4AF37]/10 blur-[120px] rounded-full pointer-events-none" />
          
-         {/* LEFT IDOL (Premium Golden Niche Frame) */}
-         <div className="hidden lg:block absolute left-4 xl:left-24 top-1/2 -translate-y-1/2 w-[160px] xl:w-[190px] h-[300px] xl:h-[350px] z-0 group">
-           {/* Outer Golden Halo Border */}
-           <div className="absolute inset-0 rounded-t-full rounded-b-[2rem] p-[3px] bg-gradient-to-b from-[#D4AF37]/60 via-[#D4AF37]/10 to-transparent shadow-[0_15px_40px_rgba(212,175,55,0.15)] transition-all duration-700 group-hover:shadow-[0_20px_50px_rgba(212,175,55,0.3)]">
-             {/* Inner Image Mask */}
-             <div className="relative w-full h-full rounded-t-full rounded-b-[1.8rem] overflow-hidden bg-[#FDFCF9] border border-white/50">
-               <Image 
-                 src="/idol-left.jpg" 
-                 alt="Bharat Mata Idol Left" 
-                 fill 
-                 sizes="(max-width: 1280px) 160px, 190px" 
-                 className="object-cover object-center transform group-hover:scale-110 transition-transform duration-1000" 
-               />
-               {/* Deep Premium Gradient Blend */}
-               <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/80 via-black/5 to-transparent pointer-events-none transition-opacity duration-700 group-hover:opacity-70" />
-             </div>
+         {/* LEFT IDOL (Slightly Larger, Realistic, Perfectly Visible) */}
+         <div className="hidden lg:flex absolute left-8 xl:left-24 top-1/2 -translate-y-1/2 w-[180px] xl:w-[240px] h-[320px] xl:h-[400px] z-0 group flex-col items-center justify-center">
+           {/* Soft Golden Aura */}
+           <div className="absolute inset-0 bg-[#D4AF37]/20 blur-2xl rounded-full transition-opacity duration-700 group-hover:opacity-40" />
+           
+           <div className="relative w-full h-full transition-transform duration-700 ease-out group-hover:-translate-y-2">
+             <Image 
+               src="/idol-left.jpg" 
+               alt="Bharat Mata Idol Left" 
+               fill 
+               sizes="(max-width: 1280px) 180px, 240px" 
+               className="object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)]" 
+               priority
+             />
            </div>
+           {/* Elegant Minimalist Pedestal Glow */}
+           <div className="absolute -bottom-2 w-[80%] h-4 bg-black/20 blur-md rounded-full" />
+           <div className="absolute -bottom-1 w-[60%] h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-60 rounded-full" />
          </div>
 
-         {/* RIGHT IDOL (Premium Golden Niche Frame) */}
-         <div className="hidden lg:block absolute right-4 xl:right-24 top-1/2 -translate-y-1/2 w-[160px] xl:w-[190px] h-[300px] xl:h-[350px] z-0 group">
-           {/* Outer Golden Halo Border */}
-           <div className="absolute inset-0 rounded-t-full rounded-b-[2rem] p-[3px] bg-gradient-to-b from-[#D4AF37]/60 via-[#D4AF37]/10 to-transparent shadow-[0_15px_40px_rgba(212,175,55,0.15)] transition-all duration-700 group-hover:shadow-[0_20px_50px_rgba(212,175,55,0.3)]">
-             {/* Inner Image Mask */}
-             <div className="relative w-full h-full rounded-t-full rounded-b-[1.8rem] overflow-hidden bg-[#FDFCF9] border border-white/50">
-               <Image 
-                 src="/idol-right.jpg" 
-                 alt="Bharat Mata Idol Right" 
-                 fill 
-                 sizes="(max-width: 1280px) 160px, 190px" 
-                 className="object-cover object-center transform group-hover:scale-110 transition-transform duration-1000" 
-               />
-               {/* Deep Premium Gradient Blend */}
-               <div className="absolute inset-0 bg-gradient-to-t from-[#064E3B]/80 via-black/5 to-transparent pointer-events-none transition-opacity duration-700 group-hover:opacity-70" />
-             </div>
+         {/* RIGHT IDOL (Slightly Larger, Realistic, Perfectly Visible) */}
+         <div className="hidden lg:flex absolute right-8 xl:right-24 top-1/2 -translate-y-1/2 w-[180px] xl:w-[240px] h-[320px] xl:h-[400px] z-0 group flex-col items-center justify-center">
+           {/* Soft Golden Aura */}
+           <div className="absolute inset-0 bg-[#D4AF37]/20 blur-2xl rounded-full transition-opacity duration-700 group-hover:opacity-40" />
+           
+           <div className="relative w-full h-full transition-transform duration-700 ease-out group-hover:-translate-y-2">
+             <Image 
+               src="/idol-right.jpg" 
+               alt="Bharat Mata Idol Right" 
+               fill 
+               sizes="(max-width: 1280px) 180px, 240px" 
+               className="object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)]" 
+               priority
+             />
            </div>
+           {/* Elegant Minimalist Pedestal Glow */}
+           <div className="absolute -bottom-2 w-[80%] h-4 bg-black/20 blur-md rounded-full" />
+           <div className="absolute -bottom-1 w-[60%] h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-60 rounded-full" />
          </div>
 
          {/* CENTER MISSION BOX */}
-         <div className="max-w-3xl mx-auto text-center relative z-10 bg-white/90 backdrop-blur-xl p-10 md:p-14 rounded-[3rem] border border-white shadow-[0_30px_60px_rgba(10,25,47,0.06)]">
-           <span className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.3em] mb-6 border border-[#D4AF37]/20 shadow-sm">
-             <div className="w-1 h-1 rounded-full bg-[#D4AF37]" />
+         <div className="max-w-4xl mx-auto text-center relative z-10 bg-white/95 backdrop-blur-2xl p-10 md:p-16 rounded-[3rem] border border-white/60 shadow-[0_20px_80px_rgba(10,25,47,0.08)]">
+           <span className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.3em] mb-8 border border-[#D4AF37]/20">
+             <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
              Our Mission
-             <div className="w-1 h-1 rounded-full bg-[#D4AF37]" />
+             <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
            </span>
            
-           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#0A192F] mb-6 leading-tight font-bold drop-shadow-sm">
+           <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-serif text-[#0A192F] mb-10 leading-[1.15] font-bold">
              Real change begins with knowledge, responsibility, and collective action.
            </h2>
+
+           {/* HINDI TAGLINE - Added py-2 and leading-normal to prevent matras from clipping */}
+           <div className="mb-10 py-6 border-y border-black/5">
+             <h3 className="text-3xl md:text-4xl lg:text-5xl font-sans font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#F97316] via-[#D4AF37] to-[#F97316] py-2 leading-normal">
+               अर्थसाक्षर भारत <span className="text-[#0A192F] opacity-15 font-light mx-2 md:mx-4 drop-shadow-none">•</span> आत्मनिर्भर भारत
+             </h3>
+           </div>
            
-           <p className="text-[#0A192F]/70 text-base md:text-lg font-serif italic max-w-xl mx-auto leading-relaxed">
-             Since 2021, Sparkle Era Global Foundation has been working at the grassroots level to create awareness, empowerment, and sustainable impact across Maharashtra.
+           <p className="text-[#0A192F]/80 text-lg md:text-xl font-serif italic max-w-2xl mx-auto leading-relaxed">
+             Since 2021, Sparkle Era Global Foundation has been working at the grassroots level to create awareness, empowerment, and sustainable impact across <strong className="text-[#D4AF37] font-bold text-2xl ml-1">Bharat</strong>.
            </p>
          </div>
       </section>

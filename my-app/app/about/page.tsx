@@ -4,6 +4,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Leadership } from "../components/Leadership";
 import OurTeam from "../components/OurTeam"; 
+import { AdvisoryBoard } from "../components/AdvisoryBoard"; // <-- NEW IMPORT
 import { Eye, Target, Scale, ShieldCheck, Heart, Leaf, CheckCircle2 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
@@ -138,8 +139,11 @@ export default function AboutPage() {
       {/* 3. FOUNDER / LEADERSHIP & OUR TEAM */}
       <Leadership />
       <OurTeam />
+      
+      {/* 4. ADVISORY BOARD <-- ADDED HERE */}
+      <AdvisoryBoard />
 
-      {/* 4. VISION & MISSION (Formal Plaque Style) */}
+      {/* 5. VISION & MISSION (Formal Plaque Style) */}
       <section className="py-24 bg-[#064E3B]/[0.03] border-y border-black/5 px-6 relative overflow-hidden">
         {/* Subtle background decoration */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#F97316]/5 rounded-full blur-[80px]" />
@@ -191,7 +195,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. PILLARS OF TRUST (Institutional Layout) */}
+      {/* 6. PILLARS OF TRUST (Institutional Layout) */}
       <section className="py-32 px-6 max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -222,7 +226,7 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
-      {/* 6. GOVERNANCE & TRANSPARENCY (Official Document Style) */}
+      {/* 7. GOVERNANCE & TRANSPARENCY (Official Document Style) */}
       <section className="py-32 bg-white px-6 border-t border-black/10">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }} 
