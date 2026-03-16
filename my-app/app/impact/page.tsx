@@ -1,13 +1,36 @@
 "use client";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useInView, animate } from "framer-motion";
 import { 
   History, Scale, TrendingUp, Globe, Users, 
   Award, Trophy, Shield, Target, BookOpen, 
   Leaf, Sparkles, Flame
 } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+
+// --- COUNT UP COMPONENT ---
+function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
+  const nodeRef = useRef<HTMLSpanElement>(null);
+  const inView = useInView(nodeRef, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (inView && nodeRef.current) {
+      const controls = animate(0, to, {
+        duration: 3, // 3-second smooth easing
+        ease: [0.22, 1, 0.36, 1], // Custom easing for premium feel
+        onUpdate: (val) => {
+          if (nodeRef.current) {
+            nodeRef.current.textContent = Math.floor(val).toLocaleString() + suffix;
+          }
+        },
+      });
+      return () => controls.stop();
+    }
+  }, [inView, to, suffix]);
+
+  return <span ref={nodeRef}>0{suffix}</span>;
+}
 
 const TIMELINE = [
   {
@@ -44,11 +67,12 @@ const TIMELINE = [
   },
 ];
 
+// CHANGED: values are now integers and suffixes are separated so the animation math works.
 const MILESTONES_DATA = [
-  { icon: <Users className="w-8 h-8" />, value: "56,412", label: "Lives Empowered", color: "#F97316" },
-  { icon: <Globe className="w-8 h-8" />, value: "11", label: "Cities Reached", color: "#064E3B" },
-  { icon: <Award className="w-8 h-8" />, value: "50,060", label: "Meals Served", color: "#F97316" },
-  { icon: <Trophy className="w-8 h-8" />, value: "235+", label: "Programs Conducted", color: "#064E3B" },
+  { icon: <Users className="w-8 h-8" />, value: 56412, suffix: "", label: "Lives Empowered", color: "#F97316" },
+  { icon: <Globe className="w-8 h-8" />, value: 11, suffix: "", label: "Cities Reached", color: "#064E3B" },
+  { icon: <Award className="w-8 h-8" />, value: 50060, suffix: "+", label: "Meals Served", color: "#F97316" },
+  { icon: <Trophy className="w-8 h-8" />, value: 235, suffix: "+", label: "Programs Conducted", color: "#064E3B" },
 ];
 
 const CORE_PRINCIPLES = [
@@ -145,10 +169,12 @@ export default function ImpactPage() {
                   <div className="mb-6 inline-flex p-4 rounded-2xl bg-white shadow-md border border-black/5 text-[#F97316]">
                     {milestone.icon}
                   </div>
-                  {/* UPDATED TO SANS BOLD METRIC FONT */}
+                  
+                  {/* CHANGED: Now using the CountUp component for dynamic counting */}
                   <div className="text-5xl md:text-6xl font-sans font-black tracking-tighter mb-3" style={{ color: milestone.color }}>
-                    {milestone.value}
+                    <CountUp to={milestone.value} suffix={milestone.suffix} />
                   </div>
+                  
                   <div className="text-[#064E3B]/60 font-bold uppercase tracking-widest text-xs">
                     {milestone.label}
                   </div>
@@ -238,7 +264,6 @@ export default function ImpactPage() {
                       <div className={`grid grid-cols-3 gap-4 mb-8 pt-6 border-t border-black/5 ${isEven ? 'md:justify-items-end' : 'md:justify-items-start'}`}>
                         {Object.entries(item.stats).map(([key, value], idx) => (
                           <div key={idx}>
-                            {/* UPDATED TO SANS BOLD METRIC FONT */}
                             <div className="text-2xl md:text-3xl font-sans font-black tracking-tighter" style={{ color: item.color }}>{value}</div>
                             <div className="text-[10px] text-[#064E3B]/50 uppercase tracking-widest font-bold mt-1">{key}</div>
                           </div>

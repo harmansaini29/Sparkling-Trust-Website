@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    // Whitelist our specific image qualities to clear the warning
+    // Enable ultra-fast next-gen image formats
+    formats: ['image/avif', 'image/webp'],
     qualities: [75, 100],
     remotePatterns: [
       {
@@ -10,6 +11,8 @@ const nextConfig = {
       },
     ],
   },
+  // Enable React strict mode for better rendering checks
+  reactStrictMode: true,
 };
 
 export default nextConfig;

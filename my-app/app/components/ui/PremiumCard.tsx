@@ -19,9 +19,8 @@ export const PremiumCard = ({ children, className = "" }: { children: React.Reac
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}
-      className={`relative overflow-hidden rounded-3xl border border-white/10 bg-earth/50 backdrop-blur-md p-8 ${className}`}
+      className={`relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-earth/50 backdrop-blur-md p-6 md:p-8 ${className}`}
     >
-      {/* The "Spotlight" Effect */}
       <motion.div
         className="pointer-events-none absolute -inset-px transition duration-300"
         style={{

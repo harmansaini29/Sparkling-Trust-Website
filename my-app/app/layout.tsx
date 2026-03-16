@@ -7,12 +7,14 @@ import { FloatingActions } from "./components/FloatingActions";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap", // Ensures text is visible immediately while font loads
 });
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-cormorant",
+  display: "swap", // Ensures text is visible immediately while font loads
 });
 
 export const metadata: Metadata = {
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${cormorant.variable} scroll-smooth`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${cormorant.variable}`}>
       <body className="bg-[#FDFCF9] text-[#064E3B] font-sans antialiased selection:bg-[#F97316]/30">
         <Preloader /> 
         {children}
