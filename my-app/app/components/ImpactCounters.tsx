@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { motion, useInView, animate } from "framer-motion";
-import { Users, Calendar, MapPin, Heart } from "lucide-react";
+import { Users, Globe, Award, Trophy } from "lucide-react";
 
 function CountUp({ to, suffix }: { to: number; suffix: string }) {
   const nodeRef = useRef<HTMLSpanElement>(null);
@@ -10,8 +10,8 @@ function CountUp({ to, suffix }: { to: number; suffix: string }) {
   useEffect(() => {
     if (inView && nodeRef.current) {
       const controls = animate(0, to, {
-        duration: 3, 
-        ease: [0.22, 1, 0.36, 1], 
+        duration: 3,
+        ease: [0.22, 1, 0.36, 1],
         onUpdate: (val) => {
           if (nodeRef.current) {
             nodeRef.current.textContent = Math.floor(val).toLocaleString();
@@ -31,10 +31,10 @@ function CountUp({ to, suffix }: { to: number; suffix: string }) {
 }
 
 const stats = [
-  { id: 1, value: 56411, suffix: "+", label: "Lives Impacted", icon: <Users className="w-5 h-5 md:w-6 md:h-6 text-[#F97316]" /> },
-  { id: 2, value: 262, suffix: "+", label: "Events Organized", icon: <Calendar className="w-5 h-5 md:w-6 md:h-6 text-[#F97316]" /> },
-  { id: 3, value: 14, suffix: "", label: "Cities Covered", icon: <MapPin className="w-5 h-5 md:w-6 md:h-6 text-[#F97316]" /> },
-  { id: 4, value: 21, suffix: "", label: "Dedicated Volunteers", icon: <Heart className="w-5 h-5 md:w-6 md:h-6 text-[#F97316]" /> },
+  { id: 1, value: 56411, suffix: "", label: "Lives Empowered", icon: <Users className="w-5 h-5 md:w-6 md:h-6 text-[#F97316]" /> },
+  { id: 2, value: 14, suffix: "", label: "Cities Reached", icon: <Globe className="w-5 h-5 md:w-6 md:h-6 text-[#F97316]" /> },
+  { id: 3, value: 50060, suffix: "+", label: "Meals Served", icon: <Award className="w-5 h-5 md:w-6 md:h-6 text-[#F97316]" /> },
+  { id: 4, value: 235, suffix: "+", label: "Programs Conducted", icon: <Trophy className="w-5 h-5 md:w-6 md:h-6 text-[#F97316]" /> },
 ];
 
 export function ImpactCounters() {

@@ -27,9 +27,9 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-16 md:mb-24">
             
             <div className="lg:col-span-5 xl:col-span-4 space-y-8 md:space-y-12">
-                {/* Made Logo box max-w-full so it shrinks on very tiny phones */}
-                <div className="relative w-[280px] max-w-full h-20 md:h-24 flex items-center justify-start shrink-0 bg-white/5 backdrop-blur-xl rounded-2xl p-4 border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.8)]">
-                  <Image src="/logo.png" alt="Sparkle Era Global Foundation" fill className="object-contain object-left p-2" priority />
+                {/* Logo — no background wrapper to avoid blank dark space */}
+                <div className="relative w-[220px] max-w-full h-16 md:h-20 shrink-0">
+                  <Image src="/logo.png" alt="Sparkle Era Global Foundation" fill className="object-contain object-left" priority />
                 </div>
                 
                 <div className="space-y-6 md:space-y-8 text-white/80 text-sm sm:text-base md:text-lg">

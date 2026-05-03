@@ -11,7 +11,7 @@ const projects = [
     tag: 'PROTECTION',
     description: 'Combating financial fraud through grassroots awareness camps.',
     icon: <Shield className="w-5 h-5 md:w-6 md:h-6" />,
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop',
+    image: '/pic1.jpg',
     color: '#064E3B'
   },
   {
@@ -20,7 +20,7 @@ const projects = [
     tag: 'EMPOWERMENT',
     description: 'Empowering women through skill development and micro-financing.',
     icon: <Users className="w-5 h-5 md:w-6 md:h-6" />,
-    image: 'https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1200&auto=format&fit=crop',
+    image: '/pic2.jpg',
     color: '#F97316'
   },
   {
@@ -29,7 +29,7 @@ const projects = [
     tag: 'CULTURE',
     description: 'Connecting the youth with the timeless wisdom of Indian civilization.',
     icon: <BookOpen className="w-5 h-5 md:w-6 md:h-6" />,
-    image: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1200&auto=format&fit=crop',
+    image: '/pic3.jpg',
     color: '#064E3B'
   },
   {
@@ -38,7 +38,7 @@ const projects = [
     tag: 'WELFARE',
     description: 'A dedicated support network ensuring no one is left behind.',
     icon: <HandHeart className="w-5 h-5 md:w-6 md:h-6" />,
-    image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200&auto=format&fit=crop',
+    image: '/pic4.jpg',
     color: '#F97316'
   },
   {
@@ -47,7 +47,7 @@ const projects = [
     tag: 'SERVICE',
     description: 'A sanctuary where care meets compassion for the destitute.',
     icon: <Heart className="w-5 h-5 md:w-6 md:h-6" />,
-    image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=1200&auto=format&fit=crop',
+    image: '/pic5.jpg',
     color: '#064E3B'
   },
   {
@@ -56,7 +56,7 @@ const projects = [
     tag: 'NATURE',
     description: 'Restoring the balance of nature through mass plantation drives.',
     icon: <Leaf className="w-5 h-5 md:w-6 md:h-6" />,
-    image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200&auto=format&fit=crop',
+    image: '/pic6.jpg',
     color: '#F97316'
   }
 ];
@@ -67,7 +67,7 @@ export default function PillarsOfImpact() {
   return (
     <section className="py-20 md:py-32 bg-[#FDFCF9] relative overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-4 md:px-6">
-        
+
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-6 md:gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -89,32 +89,31 @@ export default function PillarsOfImpact() {
         <div className="flex flex-col lg:flex-row h-[75vh] min-h-[700px] lg:h-[600px] lg:min-h-0 gap-3 md:gap-4 w-full">
           {projects.map((project, index) => {
             const isActive = activeItem === index;
-            
+
             return (
               <motion.div
                 key={project.id}
                 layout
                 onClick={() => setActiveItem(index)}
                 onMouseEnter={() => setActiveItem(index)}
-                className={`relative rounded-3xl md:rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-700 ease-[0.32,0.72,0,1] shadow-2xl ${
-                  isActive ? "lg:flex-[4] flex-[2]" : "lg:flex-[1] flex-[0.5]"
-                }`}
+                className={`relative rounded-3xl md:rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-700 ease-[0.32,0.72,0,1] shadow-2xl ${isActive ? "lg:flex-[4] flex-[2]" : "lg:flex-[1] flex-[0.5]"
+                  }`}
               >
-                <Image 
-                  src={project.image} 
-                  alt={project.title} 
-                  fill 
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
                   sizes="(max-width: 1024px) 100vw, 25vw"
                   className={`object-cover transition-transform duration-1000 ${isActive ? 'scale-100' : 'scale-110 grayscale brightness-[0.4]'}`}
                   priority={isActive}
                 />
-                
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-90 transition-opacity duration-500" />
                 {!isActive && <div className="absolute inset-0 bg-[#064E3B]/40 mix-blend-multiply transition-colors duration-500" />}
 
                 {/* Adjusted Padding for Mobile */}
                 <div className="absolute inset-0 p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col justify-end">
-                  
+
                   <div className={`flex items-center gap-3 md:gap-4 transition-all duration-500 ${isActive ? 'mb-3 md:mb-4' : 'mb-0 lg:rotate-[-90deg] lg:origin-left lg:absolute lg:bottom-12 lg:left-14'}`}>
                     <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center shrink-0 backdrop-blur-xl border border-white/20 text-white transition-colors duration-500 shadow-xl ${isActive ? 'bg-[#F97316]' : 'bg-white/10'}`}>
                       {project.icon}
@@ -127,7 +126,7 @@ export default function PillarsOfImpact() {
 
                   <AnimatePresence>
                     {isActive && (
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
@@ -142,7 +141,7 @@ export default function PillarsOfImpact() {
                           {project.description}
                         </p>
                         <a href={`/programs/${project.id}`} className="inline-flex items-center gap-2 text-white font-bold text-[9px] md:text-[10px] uppercase tracking-[0.2em] hover:text-[#F97316] transition-colors group pb-2">
-                          Explore Program 
+                          Explore Program
                           <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
                         </a>
                       </motion.div>

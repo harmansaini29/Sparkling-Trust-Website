@@ -2,9 +2,9 @@
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { motion, useScroll, useTransform, useSpring, useInView, animate } from "framer-motion";
-import { 
-  History, Scale, TrendingUp, Globe, Users, 
-  Award, Trophy, Shield, Target, BookOpen, 
+import {
+  History, Scale, TrendingUp, Globe, Users,
+  Award, Trophy, Shield, Target, BookOpen,
   Leaf, Sparkles, Flame
 } from "lucide-react";
 import { useRef, useEffect } from "react";
@@ -69,8 +69,8 @@ const TIMELINE = [
 
 // CHANGED: values are now integers and suffixes are separated so the animation math works.
 const MILESTONES_DATA = [
-  { icon: <Users className="w-8 h-8" />, value: 56412, suffix: "", label: "Lives Empowered", color: "#F97316" },
-  { icon: <Globe className="w-8 h-8" />, value: 11, suffix: "", label: "Cities Reached", color: "#064E3B" },
+  { icon: <Users className="w-8 h-8" />, value: 56411, suffix: "", label: "Lives Empowered", color: "#F97316" },
+  { icon: <Globe className="w-8 h-8" />, value: 14, suffix: "", label: "Cities Reached", color: "#064E3B" },
   { icon: <Award className="w-8 h-8" />, value: 50060, suffix: "+", label: "Meals Served", color: "#F97316" },
   { icon: <Trophy className="w-8 h-8" />, value: 235, suffix: "+", label: "Programs Conducted", color: "#064E3B" },
 ];
@@ -92,7 +92,7 @@ export default function ImpactPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
@@ -106,7 +106,7 @@ export default function ImpactPage() {
   return (
     <main ref={containerRef} className="min-h-screen bg-[#FDFCF9] text-[#064E3B] font-sans selection:bg-[#F97316]/30 overflow-x-hidden">
       <Navbar />
-      
+
       <motion.div className="fixed top-0 left-0 right-0 h-1.5 bg-[#F97316] z-50 origin-left" style={{ scaleX }} />
 
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -121,13 +121,13 @@ export default function ImpactPage() {
         ))}
       </div>
 
-      <motion.section 
+      <motion.section
         ref={heroRef}
         className="pt-48 pb-32 px-6 text-center relative overflow-hidden bg-[#064E3B]"
         style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
       >
         <div className="absolute inset-0">
-          <motion.div 
+          <motion.div
             className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#F97316]/10 blur-[120px] rounded-full pointer-events-none"
             animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -161,7 +161,7 @@ export default function ImpactPage() {
                 whileHover={{ y: -10 }}
                 className="group relative p-10 bg-[#FDFCF9] border border-black/5 rounded-[2rem] overflow-hidden shadow-xl"
               >
-                <div 
+                <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl"
                   style={{ background: `radial-gradient(circle at 50% 50%, ${milestone.color}15, transparent 70%)` }}
                 />
@@ -169,12 +169,12 @@ export default function ImpactPage() {
                   <div className="mb-6 inline-flex p-4 rounded-2xl bg-white shadow-md border border-black/5 text-[#F97316]">
                     {milestone.icon}
                   </div>
-                  
+
                   {/* CHANGED: Now using the CountUp component for dynamic counting */}
                   <div className="text-5xl md:text-6xl font-sans font-black tracking-tighter mb-3" style={{ color: milestone.color }}>
                     <CountUp to={milestone.value} suffix={milestone.suffix} />
                   </div>
-                  
+
                   <div className="text-[#064E3B]/60 font-bold uppercase tracking-widest text-xs">
                     {milestone.label}
                   </div>
@@ -230,7 +230,7 @@ export default function ImpactPage() {
             {TIMELINE.map((item, i) => {
               const isEven = i % 2 === 0;
               return (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -239,14 +239,14 @@ export default function ImpactPage() {
                   className={`relative flex flex-col md:flex-row gap-8 md:gap-16 items-start ${isEven ? "md:text-right" : "md:flex-row-reverse md:text-left"}`}
                 >
                   <div className="absolute left-8 md:left-1/2 top-0 -translate-x-1/2 z-20 flex items-center justify-center">
-                     <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white flex items-center justify-center shadow-2xl" style={{ backgroundColor: item.color }}>
-                        {item.icon}
-                     </div>
+                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white flex items-center justify-center shadow-2xl" style={{ backgroundColor: item.color }}>
+                      {item.icon}
+                    </div>
                   </div>
 
                   <div className="flex-1 md:w-1/2 pl-20 md:pl-0 w-full pt-2">
                     <div className="group relative p-8 md:p-10 bg-white border border-black/5 shadow-xl rounded-[2.5rem] hover:border-[#F97316]/30 transition-all duration-500">
-                      
+
                       <div className={`relative mb-6 flex ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
                         <span className="inline-block px-5 py-2.5 bg-[#FDFCF9] border border-black/5 shadow-sm rounded-full text-[#064E3B] font-bold tracking-widest text-xs uppercase">
                           {item.yearLabel} • {item.year}
@@ -256,7 +256,7 @@ export default function ImpactPage() {
                       <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#064E3B] mb-4 group-hover:text-[#F97316] transition-colors">
                         {item.title}
                       </h3>
-                      
+
                       <p className="text-[#064E3B]/70 leading-relaxed mb-8 text-base md:text-lg">
                         {item.desc}
                       </p>
