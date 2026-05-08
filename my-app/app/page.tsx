@@ -45,8 +45,8 @@ export default function Home() {
          </div>
 
          <div className="max-w-3xl w-[92%] sm:w-full mx-auto text-center relative z-10 bg-white/95 backdrop-blur-2xl p-6 sm:p-10 md:p-16 rounded-[1.5rem] sm:rounded-[3rem] border border-white/60 shadow-[0_15px_50px_rgba(10,25,47,0.06)] md:shadow-[0_20px_80px_rgba(10,25,47,0.08)] transform-gpu">
-           <span className="inline-flex items-center gap-1.5 sm:gap-3 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] text-[8px] sm:text-[10px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4 sm:mb-8 border border-[#D4AF37]/20">
-             <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-[#D4AF37]" /> Our Mission <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-[#D4AF37]" />
+           <span className="inline-flex items-center gap-1.5 sm:gap-3 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#F97316] text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4 sm:mb-8 shadow-[0_10px_20px_rgba(249,115,22,0.2)]">
+             <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-white/80" /> Our Mission <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-white/80" />
            </span>
            
            <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-[#0A192F] mb-5 sm:mb-10 leading-[1.3] sm:leading-[1.15] font-bold">
@@ -56,8 +56,8 @@ export default function Home() {
            <div className="mb-5 sm:mb-10 py-3 sm:py-6 border-y border-black/5">
              <h3 className="text-xl sm:text-3xl md:text-4xl font-sans font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#F97316] via-[#D4AF37] to-[#F97316] py-1.5 sm:py-2 leading-normal flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0">
                अर्थसाक्षर भारत 
-               <span className="hidden sm:inline text-[#0A192F] opacity-15 font-light mx-2 md:mx-4 drop-shadow-none">•</span>
-               <span className="sm:hidden text-[#0A192F] opacity-15 font-light drop-shadow-none">-</span>
+               <span className="hidden sm:inline text-[#F97316] mx-2 md:mx-4 drop-shadow-none">•</span>
+               <span className="sm:hidden text-[#F97316] drop-shadow-none">-</span>
                आत्मनिर्भर भारत
              </h3>
            </div>

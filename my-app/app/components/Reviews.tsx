@@ -50,8 +50,11 @@ export default function Reviews() {
     trackRef.current.style.cursor = 'grabbing';
   }, []);
 
+  const onMouseEnter = useCallback(() => {
+    setIsAnimationPaused(true);
+  }, []);
+
   const onMouseLeave = useCallback(() => {
-    if (!dragRef.current) return;
     dragRef.current = false;
     setIsDragging(false);
     setIsAnimationPaused(false);
@@ -99,11 +102,12 @@ export default function Reviews() {
       <style dangerouslySetInnerHTML={{
         __html: `
         @keyframes scroll-x {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
         .animate-scroll-x {
           animation: scroll-x 40s linear infinite;
+          will-change: transform;
         }
         .is-paused .animate-scroll-x {
           animation-play-state: paused;
@@ -150,6 +154,7 @@ export default function Reviews() {
           className={`drag-track relative w-full pb-12 pt-4 md:pb-16 md:pt-8 select-none ${isAnimationPaused ? 'is-paused' : ''}`}
           style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
           onMouseDown={onMouseDown}
+          onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           onMouseUp={onMouseUp}
           onMouseMove={onMouseMove}
