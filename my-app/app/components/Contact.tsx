@@ -53,7 +53,7 @@ export function Contact() {
                   <div className="w-14 h-14 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-[#F97316] shadow-sm group-hover:bg-[#F97316] group-hover:text-white transition-colors"><Mail size={24} /></div>
                   <div className="pt-1">
                     <h4 className="font-bold text-[#064E3B] text-xs uppercase tracking-widest mb-2 opacity-50">Email</h4>
-                    <p className="text-[#064E3B] font-serif text-lg break-all">sparkleglobalfoundation@gmail.com</p>
+                    <p className="text-[#064E3B] font-serif text-lg break-all">support@sparkleera.org</p>
                   </div>
               </div>
             </div>

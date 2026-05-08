@@ -27,8 +27,8 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-16 md:mb-24">
             
             <div className="lg:col-span-5 xl:col-span-4 space-y-8 md:space-y-12">
-                {/* Logo — no background wrapper to avoid blank dark space */}
-                <div className="relative w-[220px] max-w-full h-16 md:h-20 shrink-0">
+                {/* Logo — wide container to match the horizontal logo */}
+                <div className="relative w-[260px] max-w-full h-[75px] md:h-[90px] shrink-0">
                   <Image src="/logo.png" alt="Sparkle Era Global Foundation" fill className="object-contain object-left" priority />
                 </div>
                 
@@ -49,7 +49,7 @@ export function Footer() {
                       <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#F97316]/10 flex items-center justify-center shrink-0 border border-[#F97316]/20 group-hover:bg-[#F97316] group-hover:border-[#F97316] transition-all duration-300">
                         <Mail size={18} className="text-[#F97316] group-hover:text-white transition-colors md:w-5 md:h-5" />
                       </div>
-                      <p className="font-medium text-sm sm:text-base break-all md:break-normal group-hover:text-white transition-colors">sparkleglobalfoundation@gmail.com</p>
+                      <p className="font-medium text-sm sm:text-base break-all md:break-normal group-hover:text-white transition-colors">support@sparkleera.org</p>
                     </div>
                 </div>
             </div>

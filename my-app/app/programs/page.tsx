@@ -8,27 +8,27 @@ import Link from "next/link";
 import { useState } from "react";
 
 const PROGRAMS = [
-  { 
+  {
     id: "satark", category: "Awareness", title: "Satark", tagline: "Financial Awareness & Vigilance",
     image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200", metrics: { impact: "50,000+", events: "100+" }
   },
-  { 
+  {
     id: "saksham", category: "Empowerment", title: "Saksham", tagline: "Women Empowerment",
     image: "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1200", metrics: { impact: "10,000+", events: "250+" }
   },
-  { 
+  {
     id: "sanskar", category: "Education", title: "Sanskar", tagline: "Values & Heritage",
     image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1200", metrics: { impact: "5,000+", events: "80+" }
   },
-  { 
+  {
     id: "sathi", category: "Welfare", title: "Sathi", tagline: "Community Support System",
     image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200", metrics: { impact: "Daily", events: "24/7" }
   },
-  { 
+  {
     id: "sevalay", category: "Service", title: "Sevalay", tagline: "Shelter & Care",
     image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=1200", metrics: { impact: "100+", events: "Daily" }
   },
-  { 
+  {
     id: "shrushti", category: "Environment", title: "Shrushti Savardhan", tagline: "Environmental Stewardship",
     image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200", metrics: { impact: "10,000+", events: "50+" }
   }
@@ -43,7 +43,7 @@ export default function ProgramsPage() {
   const filteredPrograms = PROGRAMS.filter(program => {
     const matchesCategory = selectedCategory === "All" || program.category === selectedCategory;
     const matchesSearch = program.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          program.tagline.toLowerCase().includes(searchQuery.toLowerCase());
+      program.tagline.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -111,22 +111,22 @@ export default function ProgramsPage() {
               <div className="p-8">
                 <h3 className="text-3xl font-serif mb-2 group-hover:text-gold transition-colors">{program.title}</h3>
                 <p className="text-earth/60 italic text-sm mb-6">{program.tagline}</p>
-                
+
                 <div className="grid grid-cols-3 gap-2 py-6 border-t border-black/5">
-                   <div>
-                     {/* UPDATED TO SANS BOLD METRIC FONT */}
-                     <div className="font-sans font-black tracking-tighter text-2xl text-gold">{program.metrics.impact}</div>
-                     <div className="text-[10px] uppercase text-earth/40">Impact</div>
-                   </div>
-                   <div>
-                     {/* UPDATED TO SANS BOLD METRIC FONT */}
-                     <div className="font-sans font-black tracking-tighter text-2xl text-gold">{program.metrics.events}</div>
-                     <div className="text-[10px] uppercase text-earth/40">Events</div>
-                   </div>
-                   
-                   <Link href={`/programs/${program.id}`} className="flex justify-end items-center group/btn">
-                      <div className="flex items-center gap-1 text-[10px] font-bold uppercase text-gold">View <ArrowUpRight size={16} className="group-hover/btn:translate-x-1 transition-transform" /></div>
-                   </Link>
+                  <div>
+                    {/* UPDATED TO SANS BOLD METRIC FONT */}
+                    <div className="font-sans font-black tracking-tighter text-2xl text-gold">{program.metrics.impact}</div>
+                    <div className="text-[10px] uppercase text-earth/40">Impact</div>
+                  </div>
+                  <div>
+                    {/* UPDATED TO SANS BOLD METRIC FONT */}
+                    <div className="font-sans font-black tracking-tighter text-2xl text-gold">{program.metrics.events}</div>
+                    <div className="text-[10px] uppercase text-earth/40">Events</div>
+                  </div>
+
+                  <Link href={`/programs/${program.id}`} className="flex justify-end items-center group/btn">
+                    <div className="flex items-center gap-1 text-[10px] font-bold uppercase text-gold">View <ArrowUpRight size={16} className="group-hover/btn:translate-x-1 transition-transform" /></div>
+                  </Link>
                 </div>
               </div>
             </motion.div>

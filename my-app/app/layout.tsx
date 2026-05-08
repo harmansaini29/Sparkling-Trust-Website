@@ -18,7 +18,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.sparklingera.org'), 
+  metadataBase: new URL('https://www.sparkleera.org'),
   title: {
     default: "Sparkle Era Global Foundation",
     template: "%s | Sparkle Era"
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${cormorant.variable}`}>
       <body className="bg-[#FDFCF9] text-[#064E3B] font-sans antialiased selection:bg-[#F97316]/30">
-        <Preloader /> 
+        <Preloader />
         {children}
         <FloatingActions />
       </body>

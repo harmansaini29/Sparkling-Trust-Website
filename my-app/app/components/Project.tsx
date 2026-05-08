@@ -52,7 +52,7 @@ const projects = [
   },
   {
     id: 'shrushti',
-    title: 'Shrushti',
+    title: 'Shrusti Sanvardhan',
     tag: 'NATURE',
     description: 'Restoring the balance of nature through mass plantation drives.',
     icon: <Leaf className="w-5 h-5 md:w-6 md:h-6" />,

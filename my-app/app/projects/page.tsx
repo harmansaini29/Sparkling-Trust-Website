@@ -10,7 +10,7 @@ const projects = [
   { id: 'sanskar', title: 'Sanskar', tag: 'CULTURE', description: 'Connecting the youth with the timeless wisdom of Indian civilization.', icon: <BookOpen className="w-6 h-6" />, image: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1200&auto=format&fit=crop' },
   { id: 'sathi', title: 'Sathi', tag: 'WELFARE', description: 'A dedicated support network ensuring no one is left behind.', icon: <HandHeart className="w-6 h-6" />, image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200&auto=format&fit=crop' },
   { id: 'sevalay', title: 'Sevalay', tag: 'SERVICE', description: 'A sanctuary where care meets compassion for the destitute.', icon: <Heart className="w-6 h-6" />, image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=1200&auto=format&fit=crop' },
-  { id: 'shrushti', title: 'Shrushti', tag: 'NATURE', description: 'Restoring the balance of nature through mass plantation drives.', icon: <Leaf className="w-6 h-6" />, image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200&auto=format&fit=crop' }
+  { id: 'shrushti', title: 'Shrusti Sanvardhan', tag: 'NATURE', description: 'Restoring the balance of nature through mass plantation drives.', icon: <Leaf className="w-6 h-6" />, image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200&auto=format&fit=crop' }
 ];
 
 export default function PillarsOfImpact() {
@@ -43,12 +43,11 @@ export default function PillarsOfImpact() {
                 layout
                 onClick={() => setActiveItem(index)}
                 onMouseEnter={() => setActiveItem(index)}
-                className={`relative rounded-3xl md:rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-700 ease-[0.32,0.72,0,1] shadow-2xl ${
-                  isActive ? "lg:flex-[4] flex-[2]" : "lg:flex-[1] flex-[0.5]"
-                }`}
+                className={`relative rounded-3xl md:rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-700 ease-[0.32,0.72,0,1] shadow-2xl ${isActive ? "lg:flex-[4] flex-[2]" : "lg:flex-[1] flex-[0.5]"
+                  }`}
               >
-                <Image 
-                  src={project.image} alt={project.title} fill 
+                <Image
+                  src={project.image} alt={project.title} fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className={`object-cover transition-transform duration-1000 ${isActive ? 'scale-100' : 'scale-110 grayscale brightness-[0.4]'}`}
                   priority={isActive}

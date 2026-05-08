@@ -9,14 +9,14 @@ const teamMembers = [
     socials: { linkedin: "#", twitter: "#" },
   },
   {
-    name: "Dr. Elena Rostova",
+    name: "Reema Mane",
     role: "Global Outreach Lead",
     bio: "Spearheading our international programs and community engagement with over 15 years of experience in non-profit global operations.",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop",
     socials: { linkedin: "#", twitter: "#" },
   },
   {
-    name: "Marcus Chen",
+    name: "Harman Saini",
     role: "Director of Operations",
     bio: "Ensuring our initiatives are executed flawlessly on the ground. Marcus brings a wealth of experience in logistics and sustainable project management.",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop",
@@ -52,7 +52,7 @@ export default function OurTeam() {
 
               <div className="p-6 md:p-8 flex flex-col flex-grow relative">
                 <div className="absolute top-0 left-6 md:left-8 w-10 md:w-12 h-1 bg-gold rounded-b-md" />
-                
+
                 <h4 className="text-xl md:text-2xl font-serif font-bold mt-2 mb-1">{member.name}</h4>
                 <p className="text-gold font-medium text-xs md:text-sm mb-3 md:mb-4">{member.role}</p>
                 <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-6 flex-grow">{member.bio}</p>
