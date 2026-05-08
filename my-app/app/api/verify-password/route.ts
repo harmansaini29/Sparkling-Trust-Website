@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
 
+// Fallback hardcoded password — env var takes priority when set
+const FALLBACK_PASSWORD = "sparkleadmin2026";
+
 export async function POST(request: Request) {
   try {
     const { password } = await request.json();
-    
-    // Check against the environment variable
-    const validPassword = process.env.UPLOAD_PASSWORD;
-    
+
+    // Use env var if available, otherwise use fallback
+    const validPassword = process.env.UPLOAD_PASSWORD || FALLBACK_PASSWORD;
+
     if (password === validPassword) {
       return NextResponse.json({ success: true });
     } else {
