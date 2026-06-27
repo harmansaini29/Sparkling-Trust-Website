@@ -9,6 +9,7 @@ const PillarsOfImpact = dynamic(() => import("./components/Project"));
 const PhotoSlider = dynamic(() => import("./components/PhotoSlider").then(mod => mod.PhotoSlider));
 const Philosophy = dynamic(() => import("./components/Philosophy").then(mod => mod.Philosophy));
 const Reviews = dynamic(() => import("./components/Reviews"));
+const GoogleReviewsCTA = dynamic(() => import("./components/GoogleReviewsCTA").then(mod => mod.GoogleReviewsCTA));
 const Footer = dynamic(() => import("./components/Footer").then(mod => mod.Footer));
 const FloatingActions = dynamic(() => import("./components/FloatingActions").then(mod => mod.FloatingActions));
 
@@ -73,6 +74,7 @@ export default function Home() {
       <PhotoSlider />
       <Philosophy />
       <Reviews />
+      <GoogleReviewsCTA />
       <Footer />
       <FloatingActions />
     </main>
