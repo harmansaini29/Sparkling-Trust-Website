@@ -99,17 +99,31 @@ export function GoogleReviewsCTA() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-14 md:mb-20"
         >
-          {/* Google rating badge */}
-          <div className="inline-flex items-center gap-3 bg-white border border-black/[0.07] rounded-2xl px-5 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] mb-8">
-            <GoogleIcon size={24} />
-            <div className="flex items-center gap-1.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={16} className="text-[#F97316] fill-[#F97316]" />
-              ))}
+          {/* Trust badges */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
+            <div className="inline-flex items-center gap-3 bg-white border border-black/[0.07] rounded-2xl px-5 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+              <GoogleIcon size={24} />
+              <div className="flex items-center gap-1.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={16} className="text-[#F97316] fill-[#F97316]" />
+                ))}
+              </div>
+              <span className="text-[#0A192F] font-black text-lg leading-none">4.9</span>
+              <div className="w-px h-4 bg-black/10" />
+              <span className="text-[#0A192F]/50 text-sm font-medium">on Google</span>
             </div>
-            <span className="text-[#0A192F] font-black text-lg leading-none">4.9</span>
-            <div className="w-px h-4 bg-black/10" />
-            <span className="text-[#0A192F]/50 text-sm font-medium">on Google</span>
+
+            <a
+              href="https://www.linkedin.com/in/sparkle-era-global-foundation-5498393a5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 bg-white hover:bg-[#0077B5]/5 border border-black/[0.07] hover:border-[#0077B5]/30 rounded-2xl px-5 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300 group"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#0077B5" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+              <span className="text-[#0A192F] group-hover:text-[#0077B5] font-bold text-sm tracking-wide transition-colors">Connect on LinkedIn</span>
+            </a>
           </div>
 
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif text-[#064E3B] leading-tight mb-5">
@@ -208,21 +222,37 @@ export function GoogleReviewsCTA() {
               </p>
             </div>
 
-            {/* Right: CTA button */}
-            <div className="flex flex-col items-center gap-3 shrink-0">
-              <a
-                href={GOOGLE_REVIEW_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 bg-[#F97316] text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-[0.15em] shadow-[0_10px_30px_rgba(249,115,22,0.35)] hover:shadow-[0_15px_40px_rgba(249,115,22,0.5)] hover:-translate-y-0.5 transition-all duration-300"
-              >
-                <GoogleIcon size={18} />
-                Write a Review
-                <ExternalLink size={14} className="opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-              </a>
-              <p className="text-white/30 text-[11px] font-medium tracking-wide text-center">
-                Opens Google Reviews — takes 30 seconds
-              </p>
+            {/* Right: CTA buttons */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
+              <div className="flex flex-col items-center gap-2">
+                <a
+                  href={GOOGLE_REVIEW_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 bg-[#F97316] text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-[0.15em] shadow-[0_10px_30px_rgba(249,115,22,0.35)] hover:shadow-[0_15px_40px_rgba(249,115,22,0.5)] hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <GoogleIcon size={18} />
+                  Write a Review
+                  <ExternalLink size={14} className="opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                </a>
+                <span className="text-white/40 text-[11px] font-medium tracking-wide">Google Reviews</span>
+              </div>
+
+              <div className="flex flex-col items-center gap-2">
+                <a
+                  href="https://www.linkedin.com/in/sparkle-era-global-foundation-5498393a5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 bg-[#0077B5] text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-[0.15em] shadow-[0_10px_30px_rgba(0,119,181,0.35)] hover:shadow-[0_15px_40px_rgba(0,119,181,0.5)] hover:bg-[#00669c] hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                  </svg>
+                  Follow on LinkedIn
+                  <ExternalLink size={14} className="opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                </a>
+                <span className="text-white/40 text-[11px] font-medium tracking-wide">Official Profile</span>
+              </div>
             </div>
           </div>
         </motion.div>

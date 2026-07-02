@@ -124,10 +124,18 @@ export function Footer() {
                 </div>
 
                 <div className="flex gap-3 md:gap-4 flex-wrap">
-                    {[Linkedin, Twitter, Instagram, Facebook].map((Icon, i) => (
+                    {[
+                      { Icon: Linkedin, href: "https://www.linkedin.com/in/sparkle-era-global-foundation-5498393a5", label: "LinkedIn" },
+                      { Icon: Twitter, href: "#", label: "Twitter" },
+                      { Icon: Instagram, href: "#", label: "Instagram" },
+                      { Icon: Facebook, href: "#", label: "Facebook" }
+                    ].map(({ Icon, href, label }, i) => (
                         <a 
                           key={i} 
-                          href="#" 
+                          href={href}
+                          target={href !== "#" ? "_blank" : undefined}
+                          rel={href !== "#" ? "noopener noreferrer" : undefined}
+                          aria-label={label}
                           className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-[#F97316]/10 flex items-center justify-center text-[#F97316] border border-[#F97316]/20 shadow-[0_4px_15px_rgba(249,115,22,0.1)] hover:bg-[#F97316] hover:text-white transition-all duration-300"
                         >
                           <Icon size={20} className="md:w-6 md:h-6" />
