@@ -25,6 +25,16 @@ export const metadata: Metadata = {
   },
   description: "Building a financially aware and socially empowered India through financial literacy, women empowerment, cultural awareness, and environmental sustainability.",
   keywords: ["NGO", "India", "Financial Literacy", "Women Empowerment", "Pune NGO", "Sparkle Era", "Rahul Mane"],
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+      { url: '/logo.png', type: 'image/png' },
+    ],
+    shortcut: ['/icon.png'],
+    apple: [
+      { url: '/apple-icon.png', type: 'image/png' },
+    ],
+  },
   openGraph: {
     title: "Sparkle Era Global Foundation",
     description: "Building a financially aware and socially empowered India.",
